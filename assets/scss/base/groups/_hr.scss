@@ -1,0 +1,24 @@
+@use "sass:map";
+@use "../../variables" as variables;
+@use "../../sizes" as sizes;
+@use "../../colors" as colors;
+
+hr {
+  // display: block;
+  border: none;
+  height: 1px;
+  @include variables.background-color(border);
+  @include variables.margin(m, m, 0, 0);
+
+    & + *:not(hr) {
+    margin-block-start: var(--spacing-m);
+    margin-block-end: var(--spacing-m);
+    // margin-block-end: 100px;
+    // @include variables.margin(m, m, 0, 0);
+  }
+}
+
+// hr + * {
+//   margin-block-end: 100px;
+//   // @include variables.margin(m, m, 0, 0);
+// }

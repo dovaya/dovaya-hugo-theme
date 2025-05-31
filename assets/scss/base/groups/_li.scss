@@ -1,0 +1,12 @@
+@use "sass:map";
+@use "../../variables" as variables;
+@use "../../sizes" as sizes;
+@use "../../colors" as colors;
+
+li {
+  font-size: inherit;
+
+  &::marker {
+    @include variables.color(accent-alt);
+  }
+}

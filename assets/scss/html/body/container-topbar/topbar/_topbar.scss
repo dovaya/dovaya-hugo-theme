@@ -1,0 +1,29 @@
+@use "sass:map";
+@use "../../../../variables" as variables;
+@use "../../../../sizes" as sizes;
+@use "../../../../colors" as colors;
+
+.topbar {
+  // align
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  align-content: start;
+  justify-content: center;
+
+  @include variables.set-spacing-of-element("column-gap", m);
+
+  a {
+    @include variables.color(text);
+    &:visited {
+      @include variables.color(text);
+    }
+    &:hover,
+    &.current,
+    &[aria-current="page"],
+    &[aria-current="true"] {
+      @include variables.color(text);
+    }
+  }
+}

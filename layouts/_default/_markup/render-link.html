@@ -1,0 +1,59 @@
+{{- $context := . -}}
+{{- $title := "" -}}
+{{- if .Title -}}
+{{- $title = .Title -}}
+{{/*  {{- else -}}
+{{- $title = ((.Text | strings.FirstUpper ) | strings.TrimSpace ) -}}  */}}
+{{- end -}}
+
+{{- $u := urls.Parse .Destination -}}
+{{- $href := $u.String -}}
+{{- if strings.HasPrefix $u.String "#" -}}
+  {{- $href = printf "%s#%s" .PageInner.RelPermalink $u.Fragment -}}
+  <a href="{{ $href }}" title="{{ $title }}">
+      {{- with $svg:=resources.Get "svg/link-svgrepo-com.svg" | resources.Minify -}}
+      {{- $svg.Content | safeHTML -}}
+      {{- end -}}
+      &nbsp;
+      {{- .Text -}}
+  </a>
+{{- else if and $href (not $u.IsAbs) -}}
+  {{- $path := strings.TrimPrefix "./" $u.Path -}}
+  {{- if ($.PageInner.GetPage $path) -}}
+    {{- $targetPage := $.PageInner.GetPage $path -}}
+    {{- $href = $targetPage.RelPermalink -}}
+    {{- with $u.RawQuery -}}
+      {{- $href = printf "%s?%s" $href . -}}
+    {{- end -}}
+    {{- with $u.Fragment -}}
+      {{- $href = printf "%s#%s" $href . -}}
+    {{- end -}}
+    <a href="{{ $href }}" title="{{ $title }}">
+      {{- partial "helper/title-svg.html" $targetPage -}}
+      {{- .Text -}}
+    </a>
+  {{- else if or ($.PageInner.Resources.Get $path) (resources.Get $path) -}}
+    {{- $resource := $.PageInner.GetPage $path -}}
+    {{- $href = $resource.RelPermalink -}}
+    {{- with $u.RawQuery -}}
+      {{- $href = printf "%s?%s" $href . -}}
+    {{- end -}}
+    {{- with $u.Fragment -}}
+      {{- $href = printf "%s#%s" $href . -}}
+    {{- end -}}
+    <a href="{{ $href }}" title="{{ $title }}">{{- .Text -}}</a>
+  {{- else -}}
+  <a href="{{ $href }}" title="{{ $title }}">{{- .Text -}}</a>
+  {{- end -}}
+{{- else if $u.IsAbs -}}
+    <a href="{{ $u | safeURL }}" title="{{ $title }}" rel="external" target="_blank">
+        {{- with $svg:=resources.Get "svg/external-link-svgrepo-com.svg" | resources.Minify -}}
+        {{- $svg.Content | safeHTML -}}
+        {{- end -}}
+        &nbsp;
+        {{- .Text -}}
+    </a>
+{{- else -}}
+    <a href="{{ $href }}" title="{{ $title }}">{{- .Text -}}</a>
+{{- end -}}
+{{- /* chomp trailing newline */ -}}

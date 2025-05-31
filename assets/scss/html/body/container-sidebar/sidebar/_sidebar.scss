@@ -1,0 +1,33 @@
+@use "sass:map";
+@use "../../../../variables" as variables;
+@use "../../../../sizes" as sizes;
+@use "../../../../colors" as colors;
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  @include variables.set-spacing-of-element("row-gap", sidebar);
+
+  align-items: center;
+  justify-content: center;
+
+  margin: auto;
+  text-align: center;
+
+  a {
+    @include variables.color(text-alt);
+
+    &:visited {
+    @include variables.color(text-alt);
+    }
+
+    &:hover,
+    &.current,
+    &[aria-current="page"],
+    &[aria-current="true"] {
+      @include variables.color(accent);
+    }
+  }
+}
+

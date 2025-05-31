@@ -1,0 +1,61 @@
+{{ $currentPage := . }}
+
+{{/*  Get all taxonomies of this page  */}}
+{{ $taxonomies := slice }}
+{{ with site.Taxonomies }}
+    {{ range $taxonomy, $terms := .}}
+        {{ range $term, $weightedPages := $terms }}
+            {{ range $index, $weightedPage := $weightedPages}}
+                {{ if eq $currentPage $weightedPage.Page}}
+                    {{ if not (in $taxonomies $taxonomy)}}
+                    {{ $taxonomies = $taxonomies | append $taxonomy }}
+                    {{ end }}
+                {{ end }}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+{{ $lenTaxonomies := (len $taxonomies) }}
+
+{{ if (gt $lenTaxonomies  0)}}
+<div class="taxonomy">
+{{ range $indexTaxonomy, $taxonomy := $taxonomies}}
+{{ $taxonomyPage := site.GetPage $taxonomy}}
+    <ul class="taxonomy__list">
+        <li class="taxonomy__list-item item-taxonomy">
+            <a href="{{ $taxonomyPage.RelPermalink }}" title="{{ $taxonomyPage.LinkTitle }}">{{ partial "helper/translated-linktitle.html" $taxonomyPage }}</a>
+            {{/*  <a href="{{ $taxonomyPage.RelPermalink }}" title="{{ $taxonomyPage.LinkTitle }}">{{ partial "helper/title-svg.html" $taxonomyPage }}</a>  */}}
+        </li>
+        {{ with $terms := $currentPage.GetTerms $taxonomy }}
+            {{ range $indexTerms, $term := $terms }}
+            <li class="taxonomy__list-item item-term">
+                <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">{{ partial "helper/translated-linktitle.html" . }}</a>
+                {{/*  <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">{{ partial "helper/title-svg.html" . }}</a>  */}}
+            </li>
+            {{ end }}
+        {{ end }}
+    </ul>
+{{ end }}
+</div>
+{{ end }}
+
+{{/*  {{ if (gt $lenTaxonomies  0)}}
+<p class="main__metadata-taxonomy-list">
+    {{ range $indexTaxonomy, $taxonomy := $taxonomies}}
+        {{ $taxonomyPage := site.GetPage $taxonomy}}
+        {{ with $terms := $currentPage.GetTerms $taxonomy }}
+            <a href="{{ $taxonomyPage.RelPermalink }}">{{ partial "helper/translated-linktitle.html" $taxonomyPage }}</a>:&nbsp;
+            {{ $lenTerms := (len $terms) }}
+            {{ range $indexTerms, $term := $terms }}
+                <a href="{{ .RelPermalink }}">{{ partial "helper/translated-linktitle.html" . }}</a>
+                {{if ne (add $indexTerms 1) $lenTerms}}
+                &nbsp;
+                {{ end }}
+            {{ end }}
+        {{ end }}
+        {{if ne (add $indexTaxonomy 1) $lenTaxonomies}}
+        &nbsp;|&nbsp;
+        {{ end }}
+    {{ end }}
+</p>
+{{ end }}  */}}

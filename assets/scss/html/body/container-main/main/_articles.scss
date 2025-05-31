@@ -1,0 +1,68 @@
+@use "sass:map";
+@use "../../../../variables" as variables;
+@use "../../../../sizes" as sizes;
+@use "../../../../colors" as colors;
+
+.main__articles {
+  &-group {
+    border-block: 3px solid var(--color-border);
+    // @include variables.margin(xl, xl, 0, 0);
+
+    &-title {
+      @include variables.margin(m, m, 0, 0);
+    }
+
+    & + & {
+      border-block-start: 0;
+    }
+  }
+  &-bundle {
+    @include variables.border;
+    @include variables.margin(m, m, 0, 0);
+
+    &-title {
+      @include variables.margin(m, m, 0, 0);
+    }
+    &-list {
+      &-item {
+        list-style: disclosure-closed;
+  
+        p {
+          margin-block-start: 0;
+        }
+      }
+    }
+
+    // & + & {
+    //   border-block-start: 0;
+    // }
+  }
+}
+
+.main__article {
+  &-header {
+    h1 {
+      @include variables.font-size(article);
+      @include variables.margin(0, m, 0, 0);
+    }
+
+    .date {
+      @include variables.font-weight(bold);
+    }
+  }
+
+  &-summary {
+    p {
+      &:last-child {
+        margin-block-end: 0;
+      }
+    }
+  }
+
+  &-picture {
+    @include variables.margin(m, m, 0, 0);
+    &:last-child {
+      margin-block-end: 0;
+    }
+  }
+}

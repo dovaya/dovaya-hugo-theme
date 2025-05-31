@@ -1,0 +1,15 @@
+@use "sass:map";
+@use "../../../../../variables" as variables;
+@use "../../../../../sizes" as sizes;
+@use "../../../../../colors" as colors;
+
+.sidebar-avatar {
+
+  max-width: min(70%, 300px);
+  max-height: min(70%, 300px);
+
+  img {
+    border-radius: 50%;
+    box-shadow: 0 0 3rem 1rem var(--color-border-main-light);
+  }
+}

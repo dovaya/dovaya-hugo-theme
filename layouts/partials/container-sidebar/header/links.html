@@ -1,0 +1,11 @@
+{{ $author := site.Params.Author }}
+
+<div class="sidebar-links">
+    {{ with $author.links }}
+        {{- range sort . "position" -}}
+        <a target="_blank" title="{{ .title }}" href="{{- .url | safeURL -}}" class="svg">
+            {{ partial "helper/svg.html" .svg }}
+        </a>
+        {{ end -}}
+    {{ end -}}
+</div>

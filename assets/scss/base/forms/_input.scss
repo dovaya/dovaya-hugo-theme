@@ -1,0 +1,167 @@
+@use "sass:map";
+@use "../../variables" as variables;
+@use "../../sizes" as sizes;
+@use "../../colors" as colors;
+
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  font-family: inherit;
+  @include variables.margin(m, m, m, m);
+  @include variables.margin(0, xs, 0, 0);
+  @include variables.border-radius;
+  box-shadow: none;
+  max-width: 100%;
+  display: inline-block;
+  @include variables.color(text);
+  @include variables.background-color(background);
+  @include variables.border(true, true, true, true);
+
+  &[type="range"] {
+    padding: 0;
+  }
+
+  &[type="radio"] {
+    border-radius: 100%;
+    vertical-align: middle;
+    position: relative;
+    width: min-content;
+
+    &:checked {
+      @include variables.background-color(accent);
+    }
+
+    & + label {
+      display: inline-block;
+    }
+
+    &:checked::after {
+      /* creates a colored circle for the checked radio button  */
+      content: " ";
+      width: 0.25em;
+      height: 0.25em;
+      border-radius: 100%;
+      position: absolute;
+      top: 0.125em;
+      @include variables.background-color(background);
+      left: 0.125em;
+      font-size: 32px;
+    }
+  }
+
+  &[type="checkbox"] {
+    border-radius: 100%;
+    vertical-align: middle;
+    position: relative;
+    width: min-content;
+
+    &:checked {
+      @include variables.background-color(accent);
+    }
+
+    & + label {
+      display: inline-block;
+    }
+
+    &:checked::after {
+      /* Creates a rectangle with colored right and bottom borders which is rotated to look like a check mark */
+      content: " ";
+      width: 0.18em;
+      height: 0.32em;
+      border-radius: 0;
+      position: absolute;
+      top: 0.05em;
+      left: 0.17em;
+      background-color: transparent;
+      border-right: 0.08em solid var(--color-background);
+      border-bottom: 0.08em solid var(--color-background);
+      font-size: 1.8em;
+      transform: rotate(45deg);
+    }
+  }
+
+  &[type="color"] {
+    height: 2.5rem;
+    padding: 0.2rem;
+  }
+
+  &[type="file"] {
+    border: 0;
+  }
+
+  &[type="submit"] {
+    @include variables.border(true, true, true, true, accent);
+    @include variables.background-color(accent);
+    @include variables.color(text-alt);
+    @include variables.padding(s, s, m, m);
+    text-decoration: none;
+    line-height: normal;
+
+    &:enabled:hover {
+      @include variables.background-color(accent-lighter);
+      @include variables.border-color(accent-lighter);
+      cursor: pointer;
+    }
+
+    &:enabled:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 1px;
+    }
+  }
+
+  &[type="reset"] {
+    @include variables.border(true, true, true, true, accent);
+    @include variables.background-color(accent);
+    @include variables.color(text-alt);
+    @include variables.padding(s, s, m, m);
+    text-decoration: none;
+    line-height: normal;
+
+    &:enabled:hover {
+      @include variables.background-color(accent-lighter);
+      @include variables.border-color(accent-lighter);
+      cursor: pointer;
+    }
+
+    &:enabled:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 1px;
+    }
+  }
+
+  &[type="button"] {
+    @include variables.border(true, true, true, true, accent);
+    @include variables.background-color(accent);
+    @include variables.color(text-alt);
+    @include variables.padding(s, s, m, m);
+    text-decoration: none;
+    line-height: normal;
+
+    &:enabled:hover {
+      @include variables.background-color(accent-lighter);
+      @include variables.border-color(accent-lighter);
+      cursor: pointer;
+    }
+
+    &:enabled:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 1px;
+    }
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    @include variables.background-color(text-dark);
+    @include variables.border-color(text-dark);
+    @include variables.color(text-light);
+  }
+}
+
+/* Makes input fields wider on smaller screens */
+@media only screen and (max-width: map.get(sizes.$screen-sizes, "breakpoint-md")) {
+  input {
+    width: 100%;
+  }
+}

@@ -1,0 +1,9 @@
+@use "sass:map";
+@use "../../variables" as variables;
+@use "../../sizes" as sizes;
+@use "../../colors" as colors;
+
+svg {
+  width: 1em;
+  height: 1em;
+}

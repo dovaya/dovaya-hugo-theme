@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" {{with .Site.LanguageCode}} xml:lang="{{.}}" lang="{{.}}" {{end}}>
+
+<head>
+  {{ partial "head/meta.html" . }}
+  {{ partial "head/scss.html" . }}
+  {{ partial "head/scripts.html" . }}
+</head>
+
+<body>
+  {{ partial "container-topbar-toggle/toggle.html" . }}
+  <div class="container-topbar">
+    <div class="topbar">
+      {{ partial "container-topbar/avatar.html" . }}
+      {{ partial "container-topbar/author.html" . }}
+    </div>
+  </div>
+  <div class="container-sidebar" id="sidebar">
+    <div class="sidebar">
+      <header>
+        {{ partial "container-sidebar/header/avatar.html" . }}
+        {{ partial "container-sidebar/header/author.html" . }}
+        {{ partial "container-sidebar/header/navigation.html" . }}
+        {{ partial "container-sidebar/header/links.html" . }}
+        {{ partial "container-sidebar/header/theme-toggle.html" . }}
+      </header>
+      <footer>
+        {{- partial "container-sidebar/footer/footer.html" . -}}
+      </footer>
+    </div>
+  </div>
+  <div class="container-main">
+    <main>
+      {{- block "main-standard-content" . -}}
+      {{- partial "container-main/breadcrumb.html.html" . -}}
+      {{- partial "container-main/title.html.html" . -}}
+      {{- partial "container-main/meta-data.html.html" . -}}
+      {{- partial "container-main/details.html.html" . -}}
+      {{- partial "container-main/content.html.html" . -}}
+      {{- end -}}
+
+      {{- block "main" . -}}
+      {{- end -}}
+    </main>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+@use "sass:map";
+@use "../../variables" as variables;
+@use "../../sizes" as sizes;
+@use "../../colors" as colors;
+
+ul.custom {
+  @include variables.padding(0, 0, 0, 0);
+  list-style: none;
+
+  li {
+    position: relative;
+    padding-inline-start: 2em; /* space for the marker */
+
+    // &:hover::before {
+    //   cursor: pointer;
+    // }
+    
+    &.static-colors::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%; /* same height as li */
+        width: 1.5em;
+        
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+
+      &.adaptive-colors::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%; /* same height as li */
+        width: 1.5em;
+
+        background-color: currentColor; /* sets the "fill" color */
+        -webkit-mask-image: url('data:image/svg+xml;utf8,<svg fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>');
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-size: contain;
+        -webkit-mask-position: center;
+        mask-image: url('data:image/svg+xml;utf8,<svg fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>');
+        mask-repeat: no-repeat;
+        mask-size: contain;
+        mask-position: center;
+    }
+  }
+}

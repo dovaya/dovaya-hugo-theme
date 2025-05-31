@@ -1,0 +1,56 @@
+baseURL: "https://example.com"
+title: "Example Title"
+copyright: "2025. Example. All rights reserved."
+timeZone: "Europe/Zurich"
+languageCode: "en-US"
+theme: "dovaya-hugo-theme"
+module:
+  hugoVersion:
+    min: "0.146.0"
+
+markup:
+  goldmark:
+    extensions:
+      extras:
+        superscript:
+          enable: true
+    renderHooks:
+      link:
+        enableDefault: true
+    parser:
+      attribute:
+        title: true
+
+pagination:
+  disableAliases: false
+  pagerSize: 5
+
+params:
+  author:
+    name: "Example"
+    contact: "name@example.com"
+    links:
+      github: 
+        title: GitHub
+        url: https://github.com/
+        svg: github-svgrepo-com
+        position: 1
+      linkedin: 
+        title: LinkedIn
+        url: "https://www.linkedin.com/"
+        svg: linkedin-svgrepo-com
+        position: 2
+      mail:
+        title: Mail
+        url: mailto:name@example.com
+        svg: mail-svgrepo-com
+        position: 3
+    description: Official Website of Example.
+  images:
+  - logo.jpg
+
+permalinks:
+  page:
+    news: "/news/:year/:month/:slug"
+
+

@@ -1,0 +1,39 @@
+@use "sass:map";
+@use "../../../../variables" as variables;
+@use "../../../../sizes" as sizes;
+@use "../../../../colors" as colors;
+
+.taxonomy {
+  list-style-type: none;
+  @include variables.margin(s, s, 0, 0);
+
+  &__list {
+    display: block flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    list-style-type: none;
+    @include variables.set-spacing-of-element("column-gap", m);
+
+    margin: 0;
+    padding: 0;
+
+    &-item {
+      @include variables.font-size(taxonomy);
+
+      &.item-taxonomy {
+        &::after {
+          content: ":";
+        }
+      }
+
+      // &.item-term {
+      // &:last-child {
+      //   ::after {
+      //     content: "|";
+      //   }
+      // }
+      // }
+    }
+  }
+}

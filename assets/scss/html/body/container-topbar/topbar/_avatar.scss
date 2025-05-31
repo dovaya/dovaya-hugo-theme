@@ -1,0 +1,15 @@
+@use "sass:map";
+@use "../../../../variables" as variables;
+@use "../../../../sizes" as sizes;
+@use "../../../../colors" as colors;
+
+.topbar-avatar {
+    display: block;
+    height: 100%;
+
+    img {
+        height: 100%;
+        border-radius: 50%;
+        // box-shadow: 0 0 1rem 0.5rem var(--color-border-main-light);
+    }
+}

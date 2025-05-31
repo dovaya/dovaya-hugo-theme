@@ -1,0 +1,48 @@
+{{/*  This is hugo's inbuilt figure shortcode with some adaptions. Namely, the img is fingerprinted when Hugo is not in development mode. 
+See: https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/shortcodes/figure.html */}}
+{{ $resource := "" -}}
+{{- $u := urls.Parse (.Get "src") -}}
+{{- $src := $u.String -}}
+{{- if not $u.IsAbs -}}
+  {{- with or (.Page.Resources.Get $u.Path) (resources.Get $u.Path) -}}
+      {{ $resource = . -}}
+      {{ if not hugo.IsDevelopment -}}
+      {{ $resource = $resource | fingerprint -}}
+      {{ end -}}
+      {{- $src = $resource.RelPermalink -}}
+  {{- end -}}
+{{- end -}}
+
+<figure{{ with .Get "class" }} class="{{ . }}"{{ end }}>
+  {{- if .Get "link" -}}
+    <a href="{{ .Get "link" }}"{{ with .Get "target" }} target="{{ . }}"{{ end }}{{ with .Get "rel" }} rel="{{ . }}"{{ end }}>
+  {{- end -}}
+
+  <img src="{{ $src }}"
+    {{- if or (.Get "alt") (.Get "caption") }}
+    alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify| plainify }}{{ end }}"
+    {{- end -}}
+    {{- with .Get "width" }} width="{{ . }}"{{ end -}}
+    {{- with .Get "height" }} height="{{ . }}"{{ end -}}
+    {{- with .Get "loading" }} loading="{{ . }}"{{ end -}}
+    {{/*  {{ if not hugo.IsDevelopment -}}
+    integrity="{{ $resource.Data.Integrity }}"
+    {{ end -}}  */}}
+  ><!-- Closing img tag -->
+  {{- if .Get "link" }}</a>{{ end -}}
+  {{- if or (or (.Get "title") (.Get "caption")) (.Get "attr") -}}
+    <figcaption>
+      {{ with (.Get "title") -}}
+        <h4>{{ . }}</h4>
+      {{- end -}}
+      {{- if or (.Get "caption") (.Get "attr") -}}<p>
+        {{- .Get "caption" | markdownify -}}
+        {{- with .Get "attrlink" }}
+          <a href="{{ . }}">
+        {{- end -}}
+        {{- .Get "attr" | markdownify -}}
+        {{- if .Get "attrlink" }}</a>{{ end }}</p>
+      {{- end }}
+    </figcaption>
+  {{- end }}
+</figure>

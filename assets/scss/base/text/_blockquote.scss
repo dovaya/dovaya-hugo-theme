@@ -1,0 +1,14 @@
+@use "sass:map";
+@use "../../variables" as variables;
+@use "../../sizes" as sizes;
+@use "../../colors" as colors;
+
+blockquote {
+  @include variables.margin(l, l, 0, 0);
+  @include variables.padding(s, s, m, m);
+
+  border-inline-start: 0.35rem solid var(--color-accent);
+  // @include variables.border(false, false, true, false, accent);
+  @include variables.color(text-light);
+  font-style: italic;
+}

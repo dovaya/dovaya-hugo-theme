@@ -1,0 +1,11 @@
+{{ define "main" }}
+
+{{ range site.Menus.main -}}
+    {{ with .Page }}
+        {{ if not (.Eq site.Home)}}
+            {{ .Render "summary"}}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+{{ end }}

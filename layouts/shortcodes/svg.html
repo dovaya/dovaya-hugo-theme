@@ -1,0 +1,3 @@
+{{- with resources.Get (printf "svg/%s.svg" (.Get 0)) | resources.Minify -}}
+{{- .Content | safeHTML }}
+{{- end -}}

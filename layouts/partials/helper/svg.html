@@ -1,0 +1,4 @@
+{{- $svg := printf "svg/%s.svg" . -}}
+{{- with resources.Get $svg | resources.Minify -}}
+{{- .Content | safeHTML -}}
+{{- end -}}

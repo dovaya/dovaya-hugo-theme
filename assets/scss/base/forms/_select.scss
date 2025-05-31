@@ -1,0 +1,51 @@
+@use "sass:map";
+@use "../../variables" as variables;
+@use "../../sizes" as sizes;
+@use "../../colors" as colors;
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  font-family: inherit;
+  @include variables.padding(m, m, m, m);
+  @include variables.margin(0, xs, 0, 0);
+  @include variables.border-radius;
+  box-shadow: none;
+  max-width: 100%;
+  display: inline-block;
+  @include variables.color(text);
+  @include variables.background-color(background);
+  @include variables.border(true, true, true, true);
+
+  &:not([multiple]) {
+    background-image: linear-gradient(45deg, transparent 49%, var(--color-text) 51%),
+      linear-gradient(135deg, var(--color-text) 51%, transparent 49%);
+    background-position: calc(100% - 15px), calc(100% - 10px);
+    background-size:
+      5px 5px,
+      5px 5px;
+    background-repeat: no-repeat;
+    padding-inline-end: 25px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    @include variables.background-color(text-dark);
+    @include variables.border-color(text-dark);
+    @include variables.color(text-light);
+  }
+}
+
+/* Add arrow to drop-down */
+*[dir="rtl"] select:not([multiple]) {
+  background-position: 10px, 15px;
+}
+
+/* Makes input fields wider on smaller screens */
+@media only screen and (max-width: map.get(sizes.$screen-sizes, "breakpoint-md")) {
+  select {
+    width: 100%;
+  }
+}

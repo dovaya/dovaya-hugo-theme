@@ -1,0 +1,18 @@
+@use "sass:map";
+@use "../../variables" as variables;
+@use "../../sizes" as sizes;
+@use "../../colors" as colors;
+
+@counter-style thumbs {
+  system: cyclic;
+  symbols: "\2744";
+  suffix: " ";
+}
+
+ul {
+  @include variables.margin(m, m, 0, 0);
+  @include variables.padding(0, 0, xl, 0);
+  @include variables.font-size(p);
+  // list-style-type: thumbs;
+  // list-style-type: disclosure-closed;
+}

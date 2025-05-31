@@ -1,0 +1,26 @@
+{{ $opts := dict "minify" true -}}
+{{ if hugo.IsDevelopment -}}
+{{ $opts = merge $opts (dict "minify" false) -}}
+{{ end -}}
+
+{{ with $theme_toggle:=resources.Get "js/theme-toggle.js" | js.Build $opts }}
+  {{ if not hugo.IsDevelopment -}}
+  {{ $theme_toggle = $theme_toggle | fingerprint -}}
+  {{ end -}}
+  <script src="{{ $theme_toggle.Permalink }}" type="text/javascript" integrity="{{ $theme_toggle.Data.Integrity }}" crossorigin="anonymous" defer></script>
+{{ end }}
+
+{{ with $desktop:=resources.Get "js/navigation.js" | js.Build $opts }}
+  {{ if not hugo.IsDevelopment -}}
+  {{ $desktop = $desktop | fingerprint -}}
+  {{ end -}}
+  <script src="{{ $desktop.Permalink }}" type="text/javascript" integrity="{{ $desktop.Data.Integrity }}" crossorigin="anonymous" defer></script>
+{{ end }}
+
+{{ with $mobile:=resources.Get "js/sidebar-toggle.js" | js.Build $opts }}
+  {{ if not hugo.IsDevelopment -}}
+  {{ $mobile = $mobile | fingerprint -}}
+  {{ end -}}
+  <script src="{{ $mobile.Permalink }}" type="text/javascript" integrity="{{ $mobile.Data.Integrity }}" crossorigin="anonymous" defer></script>
+{{ end }}
+

@@ -1,0 +1,8 @@
+@use "sass:map";
+@use "../../../../variables" as variables;
+@use "../../../../sizes" as sizes;
+@use "../../../../colors" as colors;
+
+main {
+  width: min(75rem, 100%);
+}

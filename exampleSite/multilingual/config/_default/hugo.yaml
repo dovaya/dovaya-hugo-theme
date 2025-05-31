@@ -1,0 +1,86 @@
+baseURL: "https://example.com"
+timeZone: "Europe/Zurich"
+languageCode: "en-US"
+theme: "dovaya-hugo-theme"
+module:
+  hugoVersion:
+    min: "0.146.0"
+    
+markup:
+  goldmark:
+    extensions:
+      extras:
+        superscript:
+          enable: true
+    renderHooks:
+      link:
+        enableDefault: true
+    parser:
+      attribute:
+        title: true
+
+pagination:
+  disableAliases: false
+  pagerSize: 5
+
+defaultContentLanguage: de
+defaultContentLanguageInSubdir: true
+
+params:
+  author:
+    name: "Example"
+    contact: "name@example.com"
+    links:
+      github: 
+        title: GitHub
+        url: https://github.com/
+        svg: github-svgrepo-com
+        position: 1
+      linkedin: 
+        title: LinkedIn
+        url: "https://www.linkedin.com/"
+        svg: linkedin-svgrepo-com
+        position: 2
+      mail:
+        title: Mail
+        url: mailto:name@example.com
+        svg: mail-svgrepo-com
+        position: 3
+  images:
+  - logo.jpg
+
+permalinks:
+  page:
+    news: "/news/:year/:month/:slug"
+
+languages:
+  de:
+    weight: 1
+    disabled: false
+    languageCode: de-DE
+    languageDirection: ltr
+    languageName: Deutsch
+    title: Example Webseite
+    copyright: 2025. Example. Alle Rechte vorbehalten.
+    params:
+      author:
+        description: Offizielle Webseite von Example.
+    taxonomies:
+      areas: areas
+      status: status
+      tags: tags
+  en:
+    weight: 2
+    disabled: false
+    languageCode: en-US
+    languageDirection: ltr
+    languageName: English
+    title: Example Website
+    copyright: 2025. Example. All rights reserved.
+    params:
+      author:
+        description: Official Website of Example.
+    taxonomies:
+      areas: areas
+      status: status
+      tags: tags

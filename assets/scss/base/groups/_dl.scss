@@ -1,0 +1,13 @@
+@use "sass:map";
+@use "../../variables" as variables;
+@use "../../sizes" as sizes;
+@use "../../colors" as colors;
+
+dl {
+  dt {
+    @include variables.color(text-light);
+  }
+  dd {
+    @include variables.color(text-light);
+  }
+}

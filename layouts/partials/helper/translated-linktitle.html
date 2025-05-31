@@ -1,0 +1,16 @@
+{{- with .Params.svg -}}
+    {{- partial "helper/svg.html" . -}}&nbsp;
+{{- end -}}
+{{- if .IsTranslated -}}
+    {{- if or (eq .Kind "taxonomy") (eq .Kind "term") -}}
+        {{- if (T (replace (replace (printf "%s" .LinkTitle) " " "") "-" "")) -}}
+        {{- T (replace (replace (printf "%s" .LinkTitle) " " "") "-" "") -}}
+        {{- else -}}
+        {{- .LinkTitle -}}
+        {{- end -}}
+    {{- else -}}
+    {{- .LinkTitle -}}
+    {{- end -}}
+{{- else -}}
+{{- .LinkTitle -}}
+{{- end -}}

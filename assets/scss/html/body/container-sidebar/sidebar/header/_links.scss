@@ -1,0 +1,26 @@
+@use "sass:map";
+@use "../../../../../variables" as variables;
+@use "../../../../../sizes" as sizes;
+@use "../../../../../colors" as colors;
+
+.sidebar-links {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  @include variables.set-spacing-of-element("column-gap", sidebar);
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  a.svg {
+    svg {
+      // width: auto;
+      // @include variables.set-size-of-element(height, sidebar-links);
+  
+      @include variables.set-size-of-element(width, sidebar-links);
+      height: auto;
+    }
+  }
+}

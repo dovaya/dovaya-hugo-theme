@@ -1,0 +1,71 @@
+{{ $currentPage := .}}
+
+<div class="nav">
+    <nav class="nav__main">
+        <ul class="nav__main-list">
+            {{ range site.Menus.main -}}
+                {{ if .HasChildren -}}
+                <li class="nav__main-list-item">
+                    {{ if $currentPage.IsMenuCurrent .Menu . -}}
+                    <span aria-label="Go to Submenu {{ .Name }}" aria-current="page" class="nav__sub-list-trigger">{{ partial "helper/title-svg.html" . }}{{ .Name }}{{ .Post }}</span>
+                    {{ else if $currentPage.HasMenuCurrent .Menu . -}}
+                    <span aria-label="Go to Submenu {{ .Name }}" aria-current="true" class="nav__sub-list-trigger">{{ partial "helper/title-svg.html" . }}{{ .Name }}{{ .Post }}</span>
+                    {{ else -}}
+                    <span aria-label="Go to Submenu {{ .Name }}" class="nav__sub-list-trigger">{{ partial "helper/title-svg.html" . }}{{ .Name }}{{ .Post }}</span>
+                    {{ end -}}
+                    <ul class="nav__sub-list">
+                        <li class="nav__sub-list-item">
+                            {{ if $currentPage.IsMenuCurrent .Menu . -}}
+                            <a aria-label="Go to {{ .Name }}" aria-current="page" href="{{ .URL }}">{{ partial "helper/title-svg.html" . }}{{ with T "Index"}}{{ . }}{{ else }}Index{{ end }}</a>
+                            {{ else -}}
+                            <a aria-label="Go to {{ .Name }}" href="{{ .URL }}">{{ partial "helper/title-svg.html" . }}{{ with T "Index"}}{{ . }}{{ else }}Index{{ end }}</a>
+                            {{ end -}}
+                        </li>
+                        {{ range .Children -}}
+                        <li class="nav__sub-list-item">
+                            {{ if $currentPage.IsMenuCurrent .Menu . -}}
+                            <a aria-label="Go to {{ .Name }}" aria-current="page" href="{{ .URL }}" >{{ partial "helper/title-svg.html" . }}{{ .Name }}{{ .Post }}</a>
+                            {{ else if $currentPage.HasMenuCurrent .Menu . -}}
+                            <a aria-label="Go to {{ .Name }}" aria-current="true" href="{{ .URL }}">{{ partial "helper/title-svg.html" . }}{{ .Name }}{{ .Post }}</a>
+                            {{ else -}}
+                            <a aria-label="Go to {{ .Name }}" href="{{ .URL }}">{{ partial "helper/title-svg.html" . }}{{ .Name }}{{ .Post }}</a>
+                            {{ end }}
+                        </li>
+                        {{ end -}}
+                    </ul>
+                </li>
+                {{ else -}}
+                <li class="nav__main-list-item">
+                    {{ if $currentPage.IsMenuCurrent .Menu . -}}
+                    <a aria-label="Go to {{ .Name }}" aria-current="page" href="{{ .URL }}">{{ partial "helper/title-svg.html" . }}{{ .Name }}{{ .Post }}</a>
+                    {{ else if $currentPage.HasMenuCurrent .Menu . -}}
+                    <a aria-label="Go to {{ .Name }}" aria-current="true" href="{{ .URL }}">{{ partial "helper/title-svg.html" . }}{{ .Name }}{{ .Post }}</a>
+                    {{ else -}}
+                    <a aria-label="Go to {{ .Name }}" href="{{ .URL }}">{{ partial "helper/title-svg.html" . }}{{ .Name }}{{ .Post }}</a>
+                    {{ end -}}
+                </li>
+                {{ end -}}
+            {{ end }}
+            {{ if .IsTranslated }}
+            <li class="nav__main-list-item">
+                <span aria-label="Go to Submenu {{ .Name }}" class="nav__sub-list-trigger">
+                    {{ with resources.Get "svg/language.svg" | resources.Minify }}
+                    {{ .Content | safeHTML }}
+                    {{ end }}
+                </span>
+              <ul class="nav__sub-list">
+                {{ range .AllTranslations }}
+                <li class="nav__sub-list-item">
+                    {{ if eq $currentPage .}}
+                        <a aria-label="Go to {{ .Name }}" aria-current="page" href="{{ .RelPermalink }}">{{ upper .Language.Lang }}</a>
+                    {{ else }}
+                        <a aria-label="Go to {{ .Name }}" href="{{ .RelPermalink }}" >{{ upper .Language.Lang }}</a>
+                    {{ end }}
+                </li>
+                {{ end }}
+              </ul>
+            </li>
+            {{ end }}
+        </ul>
+    </nav>
+</div>

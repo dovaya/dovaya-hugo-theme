@@ -1,0 +1,18 @@
+@use "sass:map";
+@use "../../../../variables" as variables;
+@use "../../../../sizes" as sizes;
+@use "../../../../colors" as colors;
+
+.main__content {
+  .scrollable {
+    height: auto;
+    width: 100%;
+    overflow-x: scroll;
+    white-space: nowrap; /* Prevent content from wrapping */
+
+    > * {
+      // display: inline-block; /* Ensure inline content for horizontal scrolling */
+      overflow: visible;
+    }
+  }
+}

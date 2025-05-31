@@ -1,0 +1,38 @@
+{{ $result := "" }}
+{{ $foundTranslation := false }}
+{{ $key := ""}}
+
+{{ if hugo.IsMultilingual }}
+    {{ $key = . }}
+    {{ if not $foundTranslation }}
+        {{ if not (eq (T $key) "") }}
+            {{ $result = printf "%s" (T $key) }}
+            {{ $foundTranslation = true }}
+        {{ end}}
+    {{ end}}
+    
+    {{ $key = . | strings.FirstUpper }}
+    {{ if not $foundTranslation }}
+        {{ if not (eq (T $key) "") }}
+        {{ $result = printf "%s" (T $key) }}
+        {{ $foundTranslation = true }}
+        {{ end}}
+    {{ end}}
+
+    {{ $key = . | strings.ToLower }}
+    {{ if not $foundTranslation }}
+        {{ if not (eq (T $key) "") }}
+        {{ $result = printf "%s" (T $key) }}
+        {{ $foundTranslation = true }}
+        {{ end}}
+    {{ end}}
+
+    {{ if not $foundTranslation }}
+        {{/*  {{ $result = printf "%s" . }}  */}}
+        {{ $result = printf "MISSING TRANSLATION: %s" . }}
+    {{ end}}
+{{ else }}
+{{ $result = printf "%s" . }}
+{{ end }}
+
+{{  return $result }}

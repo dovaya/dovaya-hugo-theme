@@ -1,0 +1,23 @@
+{{ $opts := dict "display" "block" }}
+{{ $type := .Get "type" }}
+<details>
+    <summary>
+    {{ with .Get "title" }}
+        {{ if eq ($type) "html"}}
+        {{ . | safeHTML }}
+        {{ else if eq ($type) "markdown"}}
+        {{ . | markdownify }}
+        {{ else }}
+        {{ . }}
+        {{ end }}
+    {{ end }}
+    </summary>
+    {{ if eq ($type) "html"}}
+    {{ .Inner | safeHTML }}
+    {{ else if eq ($type) "markdown"}}
+    {{/*  {{ .Inner | strings.TrimSpace | markdownify }}  */}}
+    {{ .Inner | markdownify }}
+    {{ else }}
+    {{ .Inner }}
+    {{ end }}
+</details>

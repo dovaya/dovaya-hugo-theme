@@ -1,0 +1,32 @@
+@use "../../variables" as variables;
+@use "../../sizes" as sizes;
+@use "../../colors" as colors;
+
+a {
+  @include variables.color(accent);
+  text-decoration: none;
+  outline-color: transparent;
+  font-size: inherit;
+
+  &:visited {
+    @include variables.color(accent);
+  }
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    text-decoration: none;
+    @include variables.color(accent-lighter);
+  }
+
+  /* extra specificity to override a */
+  &.button {
+    @include variables.border(true, true, true, true, accent);
+    @include variables.background-color(accent);
+    @include variables.color(text-alt);
+    @include variables.padding(s, s, m, m);
+    @include variables.line-height;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}

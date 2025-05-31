@@ -1,0 +1,12 @@
+@use "sass:map";
+@use "../../variables" as variables;
+@use "../../sizes" as sizes;
+@use "../../colors" as colors;
+
+h1 {
+  @include variables.font-weight;
+  @include variables.line-height(dense);
+  @include variables.font-size(h1);
+  @include variables.margin(0, l);
+  @include variables.color(accent-alt);
+}

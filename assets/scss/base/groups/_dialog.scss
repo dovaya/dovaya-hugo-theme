@@ -1,0 +1,27 @@
+@use "sass:map";
+@use "../../variables" as variables;
+@use "../../sizes" as sizes;
+@use "../../colors" as colors;
+
+dialog {
+  max-width: 50%;
+  margin: auto;
+  @include variables.border(true, true, true, true);
+  @include variables.padding(m, m, m, m);
+  @include variables.border-radius;
+  &::backdrop {
+    @include variables.background-color(background);
+    opacity: 0.8;
+  }
+
+  // &[open] {
+
+  // }
+}
+
+@media only screen and (max-width: map.get(sizes.$screen-sizes, "breakpoint-md")) {
+  dialog {
+    max-width: 100%;
+    @include variables.margin(0, 0, m, m);
+  }
+}

@@ -1,0 +1,9 @@
+<div class="gallery">
+    {{- if eq (.Get "type") "html" -}}
+    {{ .Inner | safeHTML }}
+    {{- else if eq (.Get "type") "markdown" -}}
+    {{ .Inner | markdownify }}
+    {{- else -}}
+    {{ .Inner }}
+    {{- end -}}
+</div>

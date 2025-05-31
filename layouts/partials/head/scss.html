@@ -1,0 +1,24 @@
+{{ $opts := dict "transpiler" "dartsass" }}
+{{ if hugo.IsDevelopment}}
+{{ $opts = merge $opts (dict "outputStyle" "nested" "enableSourceMap" true) -}}
+{{ else }}
+{{ $opts = merge $opts (dict "outputStyle" "compressed" "enableSourceMap" false) -}}
+{{ end}}
+
+{{ $optsMain := merge $opts (dict "targetPath" "css/style.css") -}}
+{{ $styleMain := resources.Get "scss/styles.scss" | toCSS $optsMain -}}
+
+{{ if not hugo.IsDevelopment -}}
+{{ $styleMain = $styleMain | minify | fingerprint -}}
+{{ end -}}
+<link type="text/css" rel="stylesheet" integrity="{{ $styleMain.Data.Integrity }}" href="{{ $styleMain.RelPermalink }}">
+
+{{ with $scssCustom:= resources.Get "scss/custom.scss"}}
+    {{ $optsCustom := merge $opts (dict "targetPath" "css/custom.css") -}}
+    {{ $styleCustom := $scssCustom | toCSS $optsCustom -}}
+
+    {{ if not hugo.IsDevelopment -}}
+    {{ $styleCustom = $styleCustom | minify | fingerprint -}}
+    {{ end -}}
+    <link type="text/css" rel="stylesheet" integrity="{{ $styleCustom.Data.Integrity }}" href="{{ $styleCustom.RelPermalink }}">
+{{ end }}

@@ -1,0 +1,74 @@
+@use "sass:map";
+@use "../../../../../variables" as variables;
+@use "../../../../../sizes" as sizes;
+@use "../../../../../colors" as colors;
+
+.nav {
+  &__main {
+    &-list {
+      display: flex block;
+      flex-direction: column;
+      flex-wrap: wrap;
+
+      align-content: space-around;
+      align-items: center;
+      justify-content: left;
+
+      list-style-type: none;
+      text-align: center;
+
+      margin: 0;
+      padding: 0;
+
+      &-item {
+        display: inline-block;
+        @include variables.font-size(navigation);
+
+        &:hover,
+        &:focus {
+          cursor: pointer;
+          @include variables.color(accent);
+        }
+
+        svg {
+          height: 1em;
+        }
+
+        span {
+          &[aria-current="page"],
+          &[aria-current="true"] {
+            @include variables.color(accent);
+          }
+        }
+
+        .nav__sub-list {
+          list-style: none;
+          margin: 0;
+          padding-inline-start: 0;
+
+          max-height: 0; /* Collapsed state */
+          overflow: hidden;
+          opacity: 0;
+          transition:
+            max-height 0.4s ease,
+            opacity 0.4s ease,
+            padding 0.4s ease;
+
+          @include variables.border;
+
+          &-item {
+            text-align: center;
+            @include variables.font-size(navigation);
+          }
+        }
+
+        &.open {
+          .nav__sub-list {
+            max-height: 100vh; /* Arbitrary max height to allow for expansion */
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}

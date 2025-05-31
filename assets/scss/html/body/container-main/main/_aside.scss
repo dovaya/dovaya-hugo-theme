@@ -1,0 +1,26 @@
+@use "sass:map";
+@use "../../../../variables" as variables;
+@use "../../../../sizes" as sizes;
+@use "../../../../colors" as colors;
+
+aside {
+  width: 30%;
+  float: right;
+  @include variables.background-color(background-alt);
+  @include variables.color(text-alt);
+  @include variables.border(true, true, true, true);
+  @include variables.border-radius;
+  @include variables.margin(m, m, 0, 0);
+}
+
+*[dir="rtl"] aside {
+  float: left;
+}
+
+/* Make aside full-width on mobile */
+@media only screen and (max-width: map.get(sizes.$screen-sizes, "breakpoint-md")) {
+  aside {
+    width: 100%;
+    float: none;
+  }
+}

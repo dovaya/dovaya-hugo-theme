@@ -1,0 +1,57 @@
+@use "sass:map";
+@use "../../../variables" as variables;
+@use "../../../sizes" as sizes;
+@use "../../../colors" as colors;
+
+.container-sidebar {
+  top: 0;
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 10;
+
+  min-height: 100vh;
+  height: 100vh;
+  max-height: 100vh;
+
+  display: block;
+
+  padding-block-start: clamp(map.get(sizes.$spacing, "xxl"), 5vw, 12.5%);
+  padding-block-end: clamp(map.get(sizes.$spacing, "xxl"), 5vw, 12.5%);
+  padding-inline-start: clamp(map.get(sizes.$spacing, "xxl"), 5vw, 12.5%);
+  padding-inline-end: clamp(map.get(sizes.$spacing, "xxl"), 5vw, 12.5%);
+
+  // colors
+  @include variables.color(text-alt);
+  @include variables.background-color(background-alt);
+  box-shadow: 0 0 2rem 0.5rem var(--color-border-main-dark);
+
+  // smooth scrolling
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+@media only screen and (max-width: map.get(sizes.$screen-sizes, "breakpoint-md")) {
+  .container-sidebar {
+    top: 0;
+    right: 0;
+    position: fixed;
+
+    pointer-events: none;
+    z-index: 21;
+    width: 90vw;
+
+    transform: translateX(90vw);
+    transition-property: transform;
+    transition-duration: 130ms;
+
+    &.open {
+      pointer-events: auto;
+      box-shadow: 0 0 2rem 0 var(--color-border-main-dark);
+
+      transform: translateX(0vw);
+      transition-property: transform;
+      transition-duration: 330ms;
+    }
+  }
+}

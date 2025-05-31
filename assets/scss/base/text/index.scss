@@ -1,0 +1,32 @@
+// ===========================
+//  Text
+// ===========================
+// Text - Basic
+@forward "h1";
+@forward "h2";
+@forward "h3";
+@forward "h4";
+@forward "h5";
+@forward "h6";
+@forward "p";
+@forward "a";
+
+// Text - Styling
+@forward "em";
+@forward "strong";
+@forward "mark";
+
+// Text - Transformation
+@forward "sub";
+@forward "sup";
+
+// Text - Coding
+@forward "pre";
+@forward "code";
+@forward "samp";
+@forward "kbd";
+
+// Text - Special
+@forward "abbr";
+@forward "blockquote";
+@forward "cite";

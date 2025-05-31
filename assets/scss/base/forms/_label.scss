@@ -1,0 +1,23 @@
+@use "sass:map";
+@use "../../variables" as variables;
+@use "../../sizes" as sizes;
+@use "../../colors" as colors;
+
+label {
+  display: block;
+
+  &[type="button"] {
+    @include variables.border(true, true, true, true, accent);
+    @include variables.background-color(accent);
+    @include variables.color(text-alt);
+    @include variables.padding(s, s, m, m);
+    text-decoration: none;
+    line-height: normal;
+
+    &:hover {
+      @include variables.background-color(accent-lighter);
+      @include variables.border-color(accent-lighter);
+      cursor: pointer;
+    }
+  }
+}

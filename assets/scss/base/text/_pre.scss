@@ -1,0 +1,30 @@
+@use "sass:map";
+@use "../../variables" as variables;
+@use "../../sizes" as sizes;
+@use "../../colors" as colors;
+
+pre {
+  @include variables.font-family(monospace);
+  @include variables.color(text-alt);
+  @include variables.background-color(background-alt);
+  @include variables.margin(m, m, 0, 0);
+  @include variables.padding(m, m, m, m);
+
+  @include variables.border(true, true, true, true);
+  @include variables.border-radius;
+  max-width: 100%;
+  overflow: auto;
+
+  code {
+    @include variables.font-family(monospace);
+    @include variables.color(text-alt);
+    background: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  span {
+    @include variables.font-family(monospace);
+    @include variables.color(text-alt);
+  }
+}

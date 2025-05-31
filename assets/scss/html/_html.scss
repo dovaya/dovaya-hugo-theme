@@ -1,0 +1,40 @@
+@use "sass:map";
+@use "../variables" as variables;
+@use "../sizes" as sizes;
+@use "../colors" as colors;
+
+html {
+  // Text settings
+  @include variables.font-family;
+  @include variables.line-height;
+  @include variables.font-weight;
+  font-size: 100%;
+
+  // Text sizing
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+
+  // Text rendering
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  text-wrap: wrap;
+  word-break: break-word;
+
+  // smooth scrolling
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  overflow-x: hidden;
+  overflow-y: scroll; /* Hide vertical scroll */
+}
+
+/* Reset box-sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}

@@ -1,0 +1,39 @@
+@use "sass:map";
+@use "../../variables" as variables;
+@use "../../sizes" as sizes;
+@use "../../colors" as colors;
+
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  font-family: inherit;
+  @include variables.padding(m, m, m, m);
+  @include variables.margin(0, xs, 0, 0);
+  @include variables.border-radius;
+  box-shadow: none;
+  max-width: 100%;
+  display: inline-block;
+  @include variables.color(text);
+  @include variables.background-color(background);
+  @include variables.border(true, true, true, true);
+
+  &:not([cols]) {
+    width: 100%;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    @include variables.background-color(text-dark);
+    @include variables.border-color(text-dark);
+    @include variables.color(text-light);
+  }
+}
+
+/* Makes input fields wider on smaller screens */
+@media only screen and (max-width: map.get(sizes.$screen-sizes, "breakpoint-md")) {
+  textarea {
+    width: 100%;
+  }
+}

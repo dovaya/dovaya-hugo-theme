@@ -1,0 +1,22 @@
+figure {
+  margin: 0;
+  max-width: 100%;
+  height: auto;
+
+  img {
+    display: block;
+    margin-inline: auto;
+  }
+
+  picture {
+    img {
+      display: block;
+      margin-inline: auto;
+    }
+  }
+
+  table {
+    width: max-content;
+    margin: 0;
+  }
+}

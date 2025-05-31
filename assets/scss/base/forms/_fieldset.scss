@@ -1,0 +1,11 @@
+@use "sass:map";
+@use "../../variables" as variables;
+@use "../../sizes" as sizes;
+@use "../../colors" as colors;
+
+fieldset {
+  @include variables.border(true, true, true, true);
+  @include variables.padding(m, m, m, m);
+  @include variables.border-radius;
+  @include variables.margin(0, m, 0, 0);
+}

@@ -1,0 +1,110 @@
+@use "sass:map";
+@use "colors" as colors;
+@use "sizes" as sizes;
+
+$sans-serif: (
+  family: "Fira Sans",
+  light: 100,
+  normal: 200,
+  bold: 400
+);
+
+$monospace: (
+  family: "Fira Code",
+  normal: 300,
+  bold: 400
+);
+
+$line-height: (
+  normal: 1.5,
+  dense: 1.1
+);
+
+@mixin font-family($font-family-selector: "sans-serif") {
+  @if $font-family-selector == "monospace" {
+    font-family: map.get($monospace, family), monospace;
+  } @else {
+    font-family: map.get($sans-serif, family), sans-serif;
+  }
+}
+
+@mixin font-weight($font-weight-selector: "normal", $font-family-selector: "sans-serif") {
+  @if $font-family-selector == "monospace" {
+    font-weight: map.get($monospace, $font-weight-selector);
+  } @else {
+    font-weight: map.get($sans-serif, $font-weight-selector);
+  }
+}
+
+@mixin line-height($line-height-selector: "normal") {
+  line-height: map.get($line-height, $line-height-selector);
+}
+
+@mixin font-size($font-size-selector: p) {
+  font-size: var(--font-size-#{$font-size-selector});
+}
+
+@mixin set-size-of-element($element, $font-size-selector: p) {
+  #{$element}: var(--font-size-#{$font-size-selector});
+}
+
+@mixin set-spacing-of-element($element, $spacing-selector: m) {
+  #{$element}: var(--spacing-#{$spacing-selector});
+}
+
+@mixin margin($block-start, $block-end, $inline-start: "0", $inline-end: "0") {
+  margin-block-start: var(--spacing-#{$block-start});
+  margin-block-end: var(--spacing-#{$block-end});
+  margin-inline-start: var(--spacing-#{$inline-start});
+  margin-inline-end: var(--spacing-#{$inline-end});
+}
+
+@mixin padding($block-start, $block-end, $inline-start: "0", $inline-end: "0") {
+  padding-block-start: var(--spacing-#{$block-start});
+  padding-block-end: var(--spacing-#{$block-end});
+  padding-inline-start: var(--spacing-#{$inline-start});
+  padding-inline-end: var(--spacing-#{$inline-end});
+}
+
+@mixin border($block-start: true, $block-end: true, $inline-start: false, $inline-end: false, $color-selector: border) {
+  @if $block-start and $block-end and $inline-start and $inline-end {
+    border: 1px solid var(--color-#{$color-selector});
+  } @else if ($block-start and $block-end) and (not($inline-start or $inline-end)) {
+    border-block: 1px solid var(--color-#{$color-selector});
+  } @else if ($inline-start and $inline-end) and (not($block-start or $block-end)) {
+    border-inline: 1px solid var(--color-#{$color-selector});
+  } @else {
+    @if $block-start {
+      border-block-start: 1px solid var(--color-#{$color-selector});
+    }
+    @if $block-end {
+      border-block-end: 1px solid var(--color-#{$color-selector});
+    }
+    @if $inline-start {
+      border-inline-start: 1px solid var(--color-#{$color-selector});
+    }
+    @if $inline-end {
+      border-inline-end: 1px solid var(--color-#{$color-selector});
+    }
+  }
+}
+
+@mixin set-color-of-element($element, $color-selector: text) {
+  #{$element}: var(--color-#{$color-selector});
+}
+
+@mixin color($color-selector: text) {
+  color: var(--color-#{$color-selector});
+}
+
+@mixin background-color($color-selector: background) {
+  background-color: var(--color-#{$color-selector});
+}
+
+@mixin border-color($color-selector: border) {
+  border-color: var(--color-#{$color-selector});
+}
+
+@mixin border-radius {
+  border-radius: sizes.$border-radius;
+}

@@ -1,0 +1,18 @@
+name: "dovaya-hugo-theme"
+license: "GPL-3.0 License"
+licenselink: "https://www.gnu.org/licenses/gpl-3.0.en.html"
+description: "A clean and elegant Hugo theme for personal websites."
+min_version: "0.146.0"
+
+# The home page of the theme, where the source can be found.
+homepage: "https://github.com/dovaya/dovaya-hugo-theme"
+
+# If you have a running demo of the theme.
+demosite: "https://dovaya.github.io/"
+
+tags: ["dark", "dark-mode", "light", "light-mode", "multilingual", "minimal", "responsive", "mobile-first", "tagging-system", "simple", "clean"]
+features: ["dark", "dark-mode", "light", "light-mode", "multilingual", "minimal", "responsive", "mobile-first", "tagging-system", "simple", "clean"]
+
+author:
+  name: "dovaya"
+  homepage: "https://dovaya.github.io/"

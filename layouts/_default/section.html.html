@@ -1,0 +1,52 @@
+{{ define "main" }}
+
+{{ $pages := slice }}
+{{ if (eq .Params.sortArticlesBy "ByDate.Reverse")}}
+  {{ $pages = .Pages.ByDate.Reverse }}
+{{ else if (eq .Params.sortArticlesBy "ByWeight")}}
+  {{ $pages = .Pages.ByWeight }}
+{{ else if (eq .Params.sortArticlesBy "ByParam")}}
+  {{ $pages = .Pages.ByParam .Params.SortingParam }}
+{{ else }}
+{{ $pages = .Pages.ByTitle }}
+{{ end }}
+
+
+<div class="main__articles">
+  {{ if .Params.usePagination }}
+    {{ range (.Paginate $pages).Pages }}
+      {{ if .IsPage}}
+      {{ .Render "single-summary" }}
+      {{ else if .IsSection}}
+      {{ .Render "section-summary" }}
+      {{ else }}
+      {{ .Render "summary" }}
+      {{ end }}
+      {{/*  {{ if .IsPage}}
+      {{ .Render "summary/single-summary" }}
+      {{ else if .IsSection}}
+      {{ .Render "summary/section-summary" }}
+      {{ else }}
+      {{ .Render "summary/summary" }}
+      {{ end }}  */}}
+    {{ end }}
+  {{ else }} 
+    {{ range $pages }}
+    {{ if .IsPage}}
+    {{ .Render "single-summary" }}
+    {{ else if .IsSection}}
+    {{ .Render "section-summary" }}
+    {{ else }}
+    {{ .Render "summary" }}
+    {{ end }}
+    {{ end }}
+  {{ end }}
+</div>
+
+{{ if .Params.usePagination }}
+<div class="main__pagination">
+  {{ template "_internal/pagination.html" . }}
+</div>
+{{ end }}
+
+{{ end }}

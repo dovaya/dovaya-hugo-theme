@@ -1,0 +1,12 @@
+defaultContentLanguage: de
+defaultContentLanguageInSubdir: true
+redirects:
+- from: /en/**
+  status: 404
+  to: /en/404.html
+- from: /de/**
+  status: 404
+  to: /de/404.html
+- from: /**
+  status: 404
+  to: /de/404.html

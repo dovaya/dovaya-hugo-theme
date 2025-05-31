@@ -1,0 +1,18 @@
+{{- $page := . -}}
+<article class="main__article">
+    <header class="main__article-header">
+        <h1 id="{{ .LinkTitle | urlize}}"><a href="{{ .RelPermalink }}">{{ partial "helper/translated-linktitle.html" . }}</a></h1>
+        {{ partial "container-main/micro/taxonomy-list.html.html" . }}
+        {{ partial "container-main/micro/date.html.html" . }}
+    </header>
+    <div class="main__article-summary">
+        <p>{{ .Summary }}</p>
+    </div>
+    {{ with $page.Resources.GetMatch "*images/feature.*" }}
+    <div class="main__article-picture">
+        <picture>
+            <img src="{{ .Permalink }}" alt="{{ $page.Title }}" type="{{ .MediaType }}"/>
+        </picture>
+    </div>
+    {{ end }}
+</article>

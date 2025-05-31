@@ -1,0 +1,36 @@
+@use "sass:map";
+@use "../../variables" as variables;
+@use "../../sizes" as sizes;
+@use "../../colors" as colors;
+
+details {
+  @include variables.padding(s, s, s, s);
+  @include variables.border(true, true, false, false);
+  // @include variables.border(true, true, true, true);
+  // @include variables.border-radius;
+  @include variables.margin(m, m, 0, 0);
+  
+  // @include variables.background-color(background-alt);
+  // @include variables.color(text-alt);
+  @include variables.font-size(p);
+  
+  > summary {
+    cursor: pointer;
+    @include variables.font-weight(bold);
+    @include variables.font-size(p);
+    @include variables.color(accent-alt);
+  }
+
+  &[open] {
+    > summary {
+      @include variables.margin(0, s, 0, 0);
+
+      + * {
+        margin-block-start: 0;
+      }
+    }
+    > :last-child {
+      margin-block-end: 0;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@use "sass:map";
+@use "../../../../variables" as variables;
+@use "../../../../sizes" as sizes;
+@use "../../../../colors" as colors;
+
+article {
+  @include variables.margin(xl, xl, 0, 0);
+  @include variables.padding(m, m, 0, 0);
+  @include variables.border;
+}
+
+// /* Don't double separators when chaining sections */
+// article + article {
+//   border-block-start: 0;
+// }

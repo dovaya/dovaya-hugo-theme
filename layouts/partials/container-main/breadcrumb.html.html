@@ -1,0 +1,34 @@
+{{ $permalink := .RelPermalink }}
+{{ $ancestorsElements := split $permalink "/"}}
+{{ $ancestorsLinks := slice }}
+{{ $ancestorLink := "" }}
+{{ range $ancestorsElements | uniq }}
+  {{ $ancestorLink = (printf "%s/%s" $ancestorLink  .)}}
+  {{ $ancestorLink = replace $ancestorLink "//" "/" }}
+  {{ $ancestorsLinks = $ancestorsLinks | append $ancestorLink }}
+{{ end }}
+
+{{ $ancestorPages := slice }}
+{{ range $ancestorsLinks }}
+  {{ with site.GetPage . }}
+    {{ $ancestorPages = $ancestorPages | append . }}
+  {{ end }}
+{{ end }}
+
+{{ $ancestors := (union $ancestorPages .Ancestors.Reverse) | uniq }}
+{{ $ancestors = $ancestors | append . }}
+{{ $ancestors = $ancestors | uniq }}
+{{ $numAncestors := sub ($ancestors | len ) 1}}
+
+<nav aria-label="breadcrumb" class="main__breadcrumb">
+  <ol class="main__breadcrumb__list">
+    {{ range first $numAncestors $ancestors }}
+    <li class="main__breadcrumb__list-item">
+      <a href="{{ .RelPermalink }}">{{ partial "helper/translated-linktitle.html" . }}</a>
+    </li>
+    {{ end }}
+    <li class="main__breadcrumb__list-item--active">
+      <a aria-current="page" href="{{ .RelPermalink }}">{{ partial "helper/translated-linktitle.html" . }}</a>
+    </li>
+  </ol>
+</nav>

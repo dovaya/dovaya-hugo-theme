@@ -1,0 +1,73 @@
+@use "sass:map";
+@use "../../variables" as variables;
+@use "../../sizes" as sizes;
+@use "../../colors" as colors;
+
+button {
+  @include variables.border(true, true, true, true);
+  @include variables.background-color(accent);
+  @include variables.color(text-alt);
+  @include variables.padding(xs, xs, m, m);
+  text-decoration: none;
+  line-height: normal;
+  font-size: inherit;
+  font-family: inherit;
+  @include variables.margin(0, xs, 0, 0);
+  @include variables.border-radius;
+  box-shadow: none;
+  max-width: 100%;
+  display: inline-block;
+
+  &[disabled] {
+    cursor: not-allowed;
+    @include variables.background-color(background-alt);
+    @include variables.border-color(text-dark);
+
+    @include variables.color(text-light);
+  }
+
+  &:enabled:hover {
+    @include variables.background-color(accent-lighter);
+    @include variables.border-color(accent-lighter);
+    cursor: pointer;
+  }
+
+  &:focus-visible:where(:enabled) {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
+  }
+}
+
+.button {
+  @include variables.border(true, true, true, true, accent);
+  @include variables.background-color(background-alt);
+  @include variables.color(text-alt);
+  text-decoration: none;
+  line-height: normal;
+  font-size: inherit;
+  font-family: inherit;
+  @include variables.padding(xs, xs, m, m);
+  @include variables.margin(0, xs, 0, 0);
+  @include variables.border-radius;
+  box-shadow: none;
+  max-width: 100%;
+  display: inline-block;
+
+  &[aria-disabled="true"] {
+    cursor: not-allowed;
+    @include variables.background-color(text-dark);
+    @include variables.border-color(text-dark);
+    @include variables.color(text-light);
+  }
+
+  &:not([aria-disabled="true"]):hover {
+    @include variables.background-color(accent-lighter);
+    @include variables.border-color(accent-lighter);
+    cursor: pointer;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
+  }
+}

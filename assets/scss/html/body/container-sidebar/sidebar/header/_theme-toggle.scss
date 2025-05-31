@@ -1,0 +1,27 @@
+@use "sass:map";
+@use "../../../../../variables" as variables;
+@use "../../../../../sizes" as sizes;
+@use "../../../../../colors" as colors;
+
+.theme-toggle {
+    background: transparent;
+    border: none;
+
+    @include variables.padding(0, 0, 0, 0);
+    @include variables.margin(0, 0, 0, 0);
+
+    align-self: center;
+
+    &:enabled:hover {
+        cursor: pointer;
+        background: transparent;
+        @include variables.color(accent);
+    }
+
+    .theme-icon {
+        vertical-align: middle;
+        width: auto;
+        @include variables.set-size-of-element("height", sidebar-theme-toggle);
+        @include variables.set-size-of-element("max-height", sidebar-theme-toggle);
+    }
+}

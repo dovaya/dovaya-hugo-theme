@@ -1,0 +1,8 @@
+<svg width="800" height="800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+  stroke-linejoin="round" class="prefix__feather prefix__feather-tool" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.121 2.121 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" />
+  <path
+    d="M2.923 1.946l1.444 5.293 4.697 4.697 1.466-1.466a6 6 0 01-.055-4.822L8.216 3.39 2.923 1.946zM13.53 13.47l-1.466 1.466 5.295 5.295a2.722 2.722 0 103.85-3.85l-2.857-2.856a6 6 0 01-4.822-.055z"
+    stroke-width="1.92474" />
+</svg>

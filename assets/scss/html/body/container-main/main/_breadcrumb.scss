@@ -1,0 +1,25 @@
+@use "sass:map";
+@use "../../../../variables" as variables;
+@use "../../../../sizes" as sizes;
+@use "../../../../colors" as colors;
+
+.main__breadcrumb {
+  &__list {
+    @include variables.margin(0, m, 0, 0);
+    @include variables.padding(0, 0, 0, 0);
+    &-item {
+      display: inline;
+      @include variables.font-size(breadcrumb);
+
+      &:not(:last-child)::after {
+        content: "\00A0\00BB\00A0";
+        // content: " » ";
+      }
+
+      &--active {
+        display: inline;
+        @include variables.font-size(breadcrumb);
+      }
+    }
+  }
+}

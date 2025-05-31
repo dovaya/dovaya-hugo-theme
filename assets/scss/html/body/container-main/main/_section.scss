@@ -1,0 +1,32 @@
+@use "sass:map";
+@use "../../../../variables" as variables;
+@use "../../../../sizes" as sizes;
+@use "../../../../colors" as colors;
+
+section {
+  @include variables.margin(xxl, xxl, 0, 0);
+  @include variables.padding(m, m, 0, 0);
+  @include variables.border;
+
+  &:first-child {
+    border-block-start: 0;
+    padding-block-start: 0;
+  }
+
+  &:last-child {
+    border-block-end: 0;
+    padding-block-end: 0;
+  }
+
+  // h2:first-child,
+  // h3:first-child {
+  //  @include variables.margin(m, xxl, 0, 0);
+  // }
+}
+
+/* Don't double separators when chaining sections */
+section + section {
+  border-block-start: 0;
+  padding-block-start: 0;
+  margin-block-start: 0;
+}

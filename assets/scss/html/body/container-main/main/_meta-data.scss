@@ -1,0 +1,39 @@
+@use "sass:map";
+@use "../../../../variables" as variables;
+@use "../../../../sizes" as sizes;
+@use "../../../../colors" as colors;
+
+.main__metadata {
+  &-taxonomy-menu {
+    display: block;
+    align-items: center;
+    justify-content: center;
+
+    > p {
+      text-align: center;
+    }
+    ul,
+    ol {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-content: center;
+      align-items: center;
+      justify-content: center;
+      justify-items: center;
+      @include variables.set-spacing-of-element("column-gap", xl);
+      @include variables.set-spacing-of-element("row-gap", m);
+      list-style-type: none;
+      padding-left: 0;
+
+      li {
+        display: inline-block;
+      }
+    }
+  }
+  &-date {
+    p {
+      @include variables.font-weight(bold);
+    }
+  }
+}

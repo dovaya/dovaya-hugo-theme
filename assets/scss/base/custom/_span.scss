@@ -1,0 +1,32 @@
+@use "sass:map";
+@use "../../variables" as variables;
+@use "../../sizes" as sizes;
+@use "../../colors" as colors;
+
+.font-variant_small-caps {
+    font-variant: small-caps;
+}
+
+.font-family_monospace {
+    @include variables.font-family(monospace);
+}
+
+.color_accent {
+    @include variables.color(accent);
+}
+
+.color_accent-alt {
+    @include variables.color(accent-alt);
+}
+
+.color_red {
+    @include variables.color(color-red);
+}
+
+.color_green {
+    @include variables.color(color-green);
+}
+
+.color_grey {
+    @include variables.color(color-grey);
+}

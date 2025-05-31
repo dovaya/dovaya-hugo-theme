@@ -1,0 +1,6 @@
+{{ $author := site.Params.Author }}
+
+<div class="sidebar-author">
+    <h1>{{ $author.Name }}</h1>
+    <p>{{ $author.Description | safeHTML}}</p>
+</div>

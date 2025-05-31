@@ -1,0 +1,39 @@
+main:
+  - identifier: "Home"
+    name: "Home"
+    pageRef: "/"
+    weight: 10
+    params:
+      svg: "home-svgrepo-com"
+  - identifier: "News"
+    name: "News"
+    pageRef: "/news"
+    weight: 20
+    params:
+      svg: "pen-tool-svgrepo-com"
+  - identifier: "Research"
+    name: "Research"
+    pageRef: "/research"
+    weight: 30
+    params:
+      svg: "book-svgrepo-com"
+  - identifier: "Research_Articles"
+    name: "Articles"
+    pageRef: "/research/articles"
+    parent: "Research"
+    weight: 1
+    params:
+      svg: "book-open-svgrepo-com"
+  - identifier: "Research_Tools"
+    name: "Tools"
+    pageRef: "/research/tools"
+    parent: "Research"
+    weight: 2
+    params:
+      svg: "tools-svgrepo-com"
+  - identifier: "About"
+    name: "About"
+    pageRef: "/about"
+    weight: 40
+    params:
+      svg: "user-svgrepo-com"

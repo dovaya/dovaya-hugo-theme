@@ -1,0 +1,18 @@
+@use "sass:map";
+@use "../../../variables" as variables;
+@use "../../../sizes" as sizes;
+@use "../../../colors" as colors;
+
+.container-main {
+  @include variables.margin(0, 0, 0, 0);
+  @include variables.padding(xxl, xxl, xxl, xxl);
+
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+@media only screen and (max-width: map.get(sizes.$screen-sizes, "breakpoint-md")) {
+  .container-main {
+    @include variables.padding(xxl, xxl, 0, 0);
+  }
+}

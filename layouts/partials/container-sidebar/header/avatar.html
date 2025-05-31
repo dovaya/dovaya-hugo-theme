@@ -1,0 +1,24 @@
+{{ $author := site.Params.Author }}
+
+<div class="sidebar-avatar">
+    <a href="{{ site.BaseURL }}">
+        {{ with resources.Get "logo.svg" -}}
+            {{ .Content | safeHTML }}
+        {{ else -}}
+        <picture>
+            {{ with resources.Get "logo.avif" -}}
+                <source srcset="{{ .Permalink }}" type="image/avif">
+            {{ end -}}
+            {{ with resources.Get "logo.webp" -}}
+                <source srcset="{{ .Permalink }}" type="image/webp">
+            {{ end -}}
+            {{ with resources.Get "logo.png" -}}
+                <source srcset="{{ .Permalink }}" type="image/png">
+            {{ end -}}
+            {{ with resources.Get "logo.jpg" -}}
+                <img src="{{ .Permalink }}" alt="Avatar" type="image/jpeg"/>
+            {{ end -}}
+        </picture>
+        {{ end -}}
+    </a>
+</div>

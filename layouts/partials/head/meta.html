@@ -1,0 +1,63 @@
+{{ $currentPage := . }}
+{{ $format := "2006-01-02T15:04:05+02:00" }}
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="container-type" content="text/html; charset=utf-8">
+<meta name="view-transition" content="same-origin">
+
+<meta name="author" content="{{ with site.Params.Author.Name }}{{ . }}{{ end }}">
+<meta name="contact" content="{{ with site.Params.Author.Contact }}{{ . }}{{ end }}">
+<meta name="description" content="{{ with .Description }}{{ . }} | {{ end }}{{ site.Params.Description }}">
+<meta name="created" content="{{ with .Date }}{{ .Format $format | safeHTMLAttr }}{{ end }}">
+<meta name="modified" content="{{ with .Lastmod }}{{ .Format $format | safeHTMLAttr }}{{ end }}">
+
+{{- $img := slice }}
+{{- with $currentPage.Resources.GetMatch "*images/feature.*" -}}
+{{- $img = . }}
+{{- else }}
+{{- $img = resources.GetMatch "*logo*" -}}
+{{- end }}
+
+{{ with $img }}
+<meta property="og:image" content="{{ .Permalink }}">
+<meta property="og:image:type" content="{{ .MediaType }}" />
+<meta property="og:image:height" content="{{ .Height }}" />
+<meta property="og:image:width" content="{{ .Width }}" />
+<meta property="og:image:alt" content="{{ site.Title }}" />
+<meta itemprop="image" content="{{ .Permalink }}">
+{{ end }}
+
+{{ template "_internal/schema.html" . }}
+{{ template "_internal/opengraph.html" . }}
+  
+{{ if eq .Kind "page" }}
+    {{ if eq .CurrentSection "home"}}
+    <title>{{- with .Title }}{{ . }} | {{ end }}{{ site.Title }}</title>
+    {{ else }}
+    <title>{{ with .CurrentSection.Title }}{{ . | strings.FirstUpper }}: {{ end }}{{- with .Title }}{{ . }} | {{ end }}{{ site.Title }}</title>
+    {{ end }}
+{{ else if eq .Kind "section"}}
+<title>{{- with .Title }}{{ . }} | {{ end }}{{ site.Title }}</title>
+{{ else if eq .Kind "term"}}
+<title>{{ with .Parent.Title }}{{ . | strings.FirstUpper }}: {{ end }}{{- with .Title }}{{ . }} | {{ end }}{{ site.Title }}</title>
+{{ else if eq .Kind "taxonomy"}}
+<title>{{- with .Title }}{{ . }} | {{ end }}{{ site.Title }}</title>
+{{ else }}
+<title>{{- with .Title }}{{ . }} | {{ end }}{{ site.Title }}</title>
+{{ end }}
+
+{{- with $icon:=resources.Get "favicon.png" }}
+<link rel="icon" type="image/png" href="{{ $icon.Permalink }}">
+{{- else -}}
+    {{- with $icon:=resources.Get "favicon.svg" }}
+    <link rel="icon" type="image/svg+xml" href="{{ $icon.Permalink }}">
+    {{- end -}}
+{{- end -}}
+
+{{ range .AlternativeOutputFormats -}}
+{{ printf `
+<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+{{- end -}}
+
+{{ hugo.Generator }}

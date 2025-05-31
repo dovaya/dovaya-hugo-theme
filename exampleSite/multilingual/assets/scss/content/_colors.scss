@@ -1,0 +1,43 @@
+@use "sass:map";
+@use "sass:color";
+
+$accent: hsl(147, 26%, 54%);
+$accent-lighter-20: color.scale($accent, $lightness: +20%, $space: oklch);
+$accent-lighter-40: color.scale($accent, $lightness: +40%, $space: oklch);
+$accent-darker-5: color.scale($accent, $lightness: -5%, $space: oklch);
+$accent-darker-10: color.scale($accent, $lightness: -10%, $space: oklch);
+$accent-darker-20: color.scale($accent, $lightness: -20%, $space: oklch);
+$accent-darker-30: color.scale($accent, $lightness: -30%, $space: oklch);
+$accent-darker-40: color.scale($accent, $lightness: -40%, $space: oklch);
+
+// Colour map.
+$theme-light: (
+  accent-alt: $accent-darker-30,
+
+  accent: $accent,
+  accent-lighter: $accent-lighter-20,
+  accent-darker: $accent-darker-20,
+);
+
+// Colour map.
+$theme-dark: (
+  accent-alt: $accent-lighter-40,
+
+  accent: $accent,
+  accent-lighter: $accent-lighter-20,
+  accent-darker: $accent-darker-40,
+);
+
+body {
+  color-scheme: dark;
+  @each $name, $color in $theme-dark {
+    --color-#{$name}: #{$color};
+  }
+
+  &.light-mode {
+    color-scheme: light;
+    @each $name, $value in $theme-light {
+      --color-#{$name}: #{$value};
+    }
+  }
+}

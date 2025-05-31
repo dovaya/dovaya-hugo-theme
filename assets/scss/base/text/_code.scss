@@ -1,0 +1,9 @@
+@use "sass:map";
+@use "../../variables" as variables;
+@use "../../sizes" as sizes;
+@use "../../colors" as colors;
+
+code {
+  @include variables.font-family(monospace);
+  @include variables.color(text-alt);
+}

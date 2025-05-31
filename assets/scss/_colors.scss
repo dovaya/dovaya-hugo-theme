@@ -1,0 +1,96 @@
+@use "sass:color";
+@use "sass:map";
+
+// Base colors.
+$black-100: #ffffff;
+$black-95: #f2f2f2;
+$black-90: #e6e6e6;
+$black-85: #d9d9d9;
+$black-80: #cccccc;
+$black-75: #bfbfbf;
+$black-70: #b3b3b3;
+$black-65: #a6a6a6;
+$black-60: #999999;
+$black-55: #8c8c8c;
+$black-50: #808080;
+$black-45: #737373;
+$black-40: #666666;
+$black-35: #595959;
+$black-30: #4d4d4d;
+$black-25: #404040;
+$black-20: #333333;
+$black-15: #262626;
+$black-10: #1a1a1a;
+$black-5: #0d0d0d;
+$black-0: #000000;
+
+$box-shadow: rgb(0 0 0 / 0.2);
+
+$accent: hsl(255, 32%, 62%); //#3ebcb6;
+$accent-lighter-20: color.scale($accent, $lightness: +20%, $space: oklch);
+$accent-lighter-40: color.scale($accent, $lightness: +40%, $space: oklch);
+$accent-darker-5: color.scale($accent, $lightness: -5%, $space: oklch);
+$accent-darker-10: color.scale($accent, $lightness: -10%, $space: oklch);
+$accent-darker-20: color.scale($accent, $lightness: -20%, $space: oklch);
+$accent-darker-30: color.scale($accent, $lightness: -30%, $space: oklch);
+$accent-darker-40: color.scale($accent, $lightness: -40%, $space: oklch);
+
+// Colour map.
+$theme-light: (
+  background: $black-95,
+  text: $black-15,
+  text-light: $black-25,
+  text-dark: $black-5,
+  border: $black-70,
+
+  background-alt: $black-80,
+  text-alt: $black-15,
+  text-light-alt: $black-25,
+  text-dark-alt: $black-5,
+  border-alt: $black-85,
+  accent-alt: $accent-darker-30,
+
+  accent: $accent,
+  accent-lighter: $accent-lighter-20,
+  accent-darker: $accent-darker-20,
+
+  border-main-dark: $black-60,
+  border-main-light: $black-60,
+);
+
+// Colour map.
+$theme-dark: (
+  background: $black-15,
+  text: $black-95,
+  text-light: $black-100,
+  text-dark: $black-90,
+  border: $black-25,
+
+  background-alt: $black-20,
+  text-alt: $black-95,
+  text-light-alt: $black-100,
+  text-dark-alt: $black-90,
+  border-alt: $black-20,
+  accent-alt: $accent-lighter-40,
+
+  accent: $accent,
+  accent-lighter: $accent-lighter-20,
+  accent-darker: $accent-darker-40,
+
+  border-main-dark: $black-10,
+  border-main-light: $black-10,
+);
+
+body {
+  color-scheme: dark;
+  @each $name, $color in $theme-dark {
+    --color-#{$name}: #{$color};
+  }
+
+  &.light-mode {
+    color-scheme: light;
+    @each $name, $value in $theme-light {
+      --color-#{$name}: #{$value};
+    }
+  }
+}

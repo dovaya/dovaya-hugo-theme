@@ -1,0 +1,17 @@
+@use "sass:map";
+@use "../../../../../variables" as variables;
+@use "../../../../../sizes" as sizes;
+@use "../../../../../colors" as colors;
+
+.sidebar-author {
+  h1 {
+    @include variables.margin(sidebar, sidebar);
+    @include variables.font-size(sidebar-author);
+    font-variant: small-caps;
+  }
+
+  p {
+    @include variables.margin(sidebar, 0);
+    @include variables.font-size(sidebar-description);
+  }
+}

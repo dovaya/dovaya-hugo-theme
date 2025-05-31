@@ -1,0 +1,103 @@
+@use "sass:map";
+@use "../../variables" as variables;
+@use "../../sizes" as sizes;
+@use "../../colors" as colors;
+
+table {
+  border-collapse: collapse;
+  @include variables.margin(xl, xl, 0, 0);
+
+  width: 100%;
+  // overflow-x: auto;
+
+  @include variables.font-size(p);
+
+  caption {
+    @include variables.font-weight(bold);
+    @include variables.margin(0, m, 0, 0);
+    width: 100%;
+  }
+
+  thead {
+    width: 100%;
+
+    tr {
+      td {
+        @include variables.border(true, true, true, true);
+        @include variables.padding(s, s, s, s);
+        text-align: start;
+      }
+
+      th {
+        // @include variables.background-color(background-alt);
+        @include variables.font-weight(bold);
+        @include variables.border(true, true, true, true);
+        @include variables.padding(s, s, s, s);
+        text-align: start;
+      }
+
+      // &:first-child(even) {
+      //   min-width: max-content;
+      // }
+
+      &:nth-child(even) {
+        /* Set every other cell slightly darker. Improves readability. */
+        // @include variables.background-color(background-alt);
+      }
+    }
+  }
+
+  tbody {
+    width: 100%;
+
+    tr {
+      td {
+        @include variables.border(true, true, true, true);
+        @include variables.padding(s, s, s, s);
+        text-align: start;
+      }
+
+      th {
+        // @include variables.background-color(background-alt);
+        @include variables.font-weight(bold);
+        @include variables.border(true, true, true, true);
+        @include variables.padding(s, s, s, s);
+        text-align: start;
+      }
+
+      // &:first-child(even) {
+      //   min-width: 100%
+      // }
+
+      &:nth-child(even) {
+        /* Set every other cell slightly darker. Improves readability. */
+        // @include variables.background-color(background-alt);
+      }
+    }
+  }
+
+  tfoot {
+    width: 100%;
+
+    tr {
+      td {
+        @include variables.border(true, true, true, true);
+        @include variables.padding(s, s, s, s);
+        text-align: start;
+      }
+
+      th {
+        // @include variables.background-color(background-alt);
+        @include variables.font-weight(bold);
+        @include variables.border(true, true, true, true);
+        @include variables.padding(s, s, s, s);
+        text-align: start;
+      }
+
+      &:nth-child(even) {
+        /* Set every other cell slightly darker. Improves readability. */
+        // @include variables.background-color(background-alt);
+      }
+    }
+  }
+}

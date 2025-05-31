@@ -1,0 +1,15 @@
+{{- $emailParts := (split (.Get "address") "@") -}}
+{{- $dataUser := "" -}}
+{{- $dataDomain:= "" -}}
+{{- with (split (index $emailParts 0) "" ) -}}
+    {{- range . -}}
+        {{- $dataUser = (printf "%s%s" . $dataUser) -}}
+    {{- end -}}
+{{- end -}}
+{{- with (split (index $emailParts 1) "" ) -}}
+    {{- range . -}}
+        {{- $dataDomain = (printf "%s%s" . $dataDomain) -}}
+    {{- end -}}
+{{- end -}}
+<span class="email" data-user="{{- $dataUser -}}" data-website="{{- $dataDomain -}}"></span>
+{{- /**/ -}}

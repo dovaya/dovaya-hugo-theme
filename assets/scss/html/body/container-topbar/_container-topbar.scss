@@ -1,0 +1,16 @@
+@use "sass:map";
+@use "../../../variables" as variables;
+@use "../../../sizes" as sizes;
+@use "../../../colors" as colors;
+
+.container-topbar {
+  top: 0;
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 10;
+
+  @include variables.background-color(background);
+  @include variables.border(false, true);
+
+  @include variables.padding(m, m);
+}

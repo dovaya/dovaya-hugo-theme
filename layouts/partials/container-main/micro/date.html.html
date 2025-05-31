@@ -1,0 +1,7 @@
+{{ if .Params.DisplayCreationDate }}
+    {{ with .Date }}
+    <p class="date">
+        {{ .Format "January 2, 2006" }}
+    </p>
+    {{ end }}
+{{ end }}

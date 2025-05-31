@@ -1,0 +1,11 @@
+<div class="main__details">
+    {{ if eq .Kind "page" }}
+    {{ .Render "single-details" }}
+    {{ else if eq .Kind "section"}}
+    {{ .Render "section-details" }}
+    {{ else if eq .Kind "term"}}
+    {{ .Render "term-details" }}
+    {{ else if eq .Kind "taxonomy"}}
+    {{ .Render "taxonomy-details" }}
+    {{ end }}
+</div>

@@ -1,0 +1,40 @@
+@use "sass:map";
+@use "../../variables" as variables;
+@use "../../sizes" as sizes;
+@use "../../colors" as colors;
+/* Reset default appearance */
+progress {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  @include variables.background-color(background-alt);
+  @include variables.border(true, true, true, true);
+  @include variables.border-radius;
+  @include variables.margin(0, ",", 0, 0);
+
+  &:indeterminate {
+    @include variables.background-color(background-alt);
+
+    &::-moz-progress-bar {
+      @include variables.background-color(background-alt);
+    }
+  }
+
+  &::-webkit-progress-bar {
+    @include variables.border-radius;
+    @include variables.background-color(background-alt);
+  }
+
+  &::-webkit-progress-value {
+    @include variables.border-radius;
+    @include variables.background-color(accent);
+  }
+
+  &::-moz-progress-bar {
+    @include variables.border-radius;
+    @include variables.background-color(accent);
+    transition-property: width;
+    transition-duration: 0.3s;
+  }
+}

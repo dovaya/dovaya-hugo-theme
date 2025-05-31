@@ -1,0 +1,13 @@
+@use "sass:map";
+@use "../../variables" as variables;
+@use "../../sizes" as sizes;
+@use "../../colors" as colors;
+
+kbd {
+  @include variables.font-family(monospace);
+  @include variables.color(text-alt);
+  @include variables.border(text-alt);
+  // border-bottom: 3px solid var(--color-text-alt);
+  @include variables.border-radius;
+  @include variables.padding(xxs, xxs, s, s);
+}
