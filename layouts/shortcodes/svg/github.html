@@ -1,5 +1,0 @@
-<a href="{{ .Get "url" | safeURL }}" target="_blank" rel="external" title="GitHub" class="svg">
-    {{ with resources.Get "svg/github.svg" | resources.Minify }}
-    {{ .Content | safeHTML }}&nbsp;GitHub
-    {{ end }}
-</a>

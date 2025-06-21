@@ -3,6 +3,12 @@ figure {
   max-width: 100%;
   height: auto;
 
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
   img {
     display: block;
     margin-inline: auto;
