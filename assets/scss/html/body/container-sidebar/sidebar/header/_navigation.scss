@@ -23,6 +23,9 @@
       &-item {
         display: inline-block;
         @include variables.font-size(navigation);
+        a {
+          @include variables.font-weight;
+        }
 
         &:hover,
         &:focus {
@@ -59,6 +62,9 @@
           &-item {
             text-align: center;
             @include variables.font-size(navigation);
+            a {
+              @include variables.font-weight;
+            }
           }
         }
 

@@ -4,7 +4,7 @@
 @use "../../colors" as colors;
 
 h5 {
-  @include variables.font-weight;
+  @include variables.font-weight(bold);
   @include variables.line-height(dense);
   @include variables.font-size(h5);
   @include variables.margin(xxl, l);

@@ -20,7 +20,8 @@
 
     &-item {
       @include variables.font-size(taxonomy);
-
+      @include variables.font-weight(bold);
+      
       &.item-taxonomy {
         &::after {
           content: ":";

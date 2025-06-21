@@ -4,6 +4,7 @@
 
 a {
   @include variables.color(accent);
+  @include variables.font-weight(bold);
   text-decoration: none;
   outline-color: transparent;
   font-size: inherit;
