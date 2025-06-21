@@ -5,7 +5,7 @@
     <div class="main__articles-bundle">
       {{/*  <hr>  */}}
       {{ $parentPage := site.GetPage (printf "/%s" .Key)}}
-      {{/*  <h2 class="main__articles-bundle-title"><a href="{{ $parentPage.RelPermalink }}">{{ partial "helper/translated-linktitle.html" $parentPage  }}</a></h2>
+      {{/*  <h2 class="main__articles-bundle-title"><a href="{{ $parentPage.RelPermalink }}">{{ partial "helper/translated-title.html" $parentPage  }}</a></h2>
       {{ with $parentPage.Summary }}
       <p>{{ . }}</p>
       {{ end }}  */}}

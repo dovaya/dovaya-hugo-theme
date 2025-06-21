@@ -25,12 +25,12 @@
     {{ range sort $taxonomiesPages "Weight"}}
         <ul class="taxonomy__list">
             <li class="taxonomy__list-item item-taxonomy">
-                <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">{{ partial "helper/translated-linktitle.html" . }}</a>
+                <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">{{ partial "helper/translated-title.html" . }}</a>
             </li>
             {{ with $terms := $currentPage.GetTerms .Type }}
                 {{ range $indexTerms, $term := $terms }}
                 <li class="taxonomy__list-item item-term">
-                    <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">{{ partial "helper/translated-linktitle.html" . }}</a>
+                    <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">{{ partial "helper/translated-title.html" . }}</a>
                 </li>
                 {{ end }}
             {{ end }}

@@ -1,12 +1,12 @@
 {{ $parentPage := .Parent}}
 {{ if and (not (.Eq site.Home)) (not ($parentPage.Eq site.Home)) }}
     <li class="main__articles-bundle-list-item">
-        <a href="{{ .RelPermalink }}">{{ partial "helper/translated-linktitle.html" . }} | {{ partial "helper/translated-title" $parentPage }}</a>
+        <a href="{{ .RelPermalink }}">{{ partial "helper/translated-title.html" . }} | {{ partial "helper/translated-title" $parentPage }}</a>
         <p>{{ .Summary }}</p>
     </li>
 {{ else }}
     <li class="main__articles-bundle-list-item">
-        <a href="{{ .RelPermalink }}">{{ partial "helper/translated-linktitle.html" . }}</a>
+        <a href="{{ .RelPermalink }}">{{ partial "helper/translated-title.html" . }}</a>
         <p>{{ .Summary }}</p>
     </li>
 {{ end }}

@@ -3,7 +3,7 @@
 <div class="main__articles">
 {{ range .Data.Terms.Alphabetical }}
   <div class="main__articles-group">
-    <h2 class="main__articles-group-title"><a href="{{ .Page.RelPermalink }}">{{ partial "helper/translated-linktitle.html" .Page }}</a></h2>
+    <h2 class="main__articles-group-title"><a href="{{ .Page.RelPermalink }}">{{ partial "helper/translated-title.html" .Page }}</a></h2>
     {{ with .Page.Summary }}
     <p>{{ . }}</p>
     {{ end }}
@@ -11,7 +11,7 @@
     {{ range .Pages.GroupBy "Type" }}
       <div class="main__articles-bundle">
         {{ $parentPage := site.GetPage (printf "/%s" .Key)}}
-          {{/*  <h3 class="main__articles-bundle-title"><a href="{{ $parentPage.RelPermalink }}">{{ partial "helper/translated-linktitle.html" $parentPage  }}</a></h3>
+          {{/*  <h3 class="main__articles-bundle-title"><a href="{{ $parentPage.RelPermalink }}">{{ partial "helper/translated-title.html" $parentPage  }}</a></h3>
           {{ with $parentPage.Summary }}
           <p>{{ . }}</p>
           {{ end }}  */}}

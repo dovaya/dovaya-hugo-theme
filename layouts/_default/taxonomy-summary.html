@@ -1,7 +1,7 @@
 {{- $page := . -}}
 <article class="main__article">
     <header class="main__article-header">
-        <h1 id="{{ .LinkTitle | urlize}}"><a href="{{ .RelPermalink }}">{{ partial "helper/translated-linktitle.html" . }}</a></h1>
+        <h1 id="{{ .LinkTitle | urlize}}"><a href="{{ .RelPermalink }}">{{ partial "helper/translated-title.html" . }}</a></h1>
         {{ partial "container-main/micro/taxonomy-list.html.html" . }}
         {{ partial "container-main/micro/date.html.html" . }}
     </header>
