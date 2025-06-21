@@ -1,7 +1,44 @@
-{{ if .Params.DisplayCreationDate }}
-    {{ with .Date }}
-    <p class="date">
-        {{ .Format "January 2, 2006" }}
-    </p>
-    {{ end }}
-{{ end }}
+{{ $timeFormat := "02 January 2006"  }}
+{{ $timeFormatMultiple := "02 January 2006"  }}
+{{ $pageParams := .Params }}
+
+{{- if $pageParams.DisplayCreationDate -}}
+    {{- with .Date -}}
+    <div class="dates">
+        <p class="dates__single">
+            {{ .Format $timeFormat }}
+        </p>
+    </div>
+    {{- end -}}
+{{- end -}}
+
+{{- if or $pageParams.dateCreated $pageParams.dateUpdated $pageParams.dateCreated -}}
+<div class="dates">
+    <ul class="dates__list">
+        {{/*  {{- with $page.Params.dateFinished -}}
+        <li class="dates__list-item">
+            {{- with resources.Get "svg/check-circle-svgrepo-com.svg" | resources.Minify -}}
+            {{- .Content | safeHTML -}}
+            {{- end }}&nbsp;
+            {{ time.Format $timeFormatMultiple . -}}
+        </li>
+        {{- end -}}  */}}
+        {{- with $pageParams.dateUpdated -}}
+        <li class="dates__list-item">
+            {{- with resources.Get "svg/refresh-ccw-svgrepo-com.svg" | resources.Minify -}}
+            {{- .Content | safeHTML -}}
+            {{- end }}&nbsp;
+            {{ time.Format $timeFormatMultiple . -}}
+        </li>
+        {{- end -}}
+        {{- with $pageParams.dateCreated -}}
+        <li class="dates__list-item">
+            {{- with resources.Get "svg/upload-cloud-svgrepo-com.svg" | resources.Minify -}}
+            {{- .Content | safeHTML -}}
+            {{- end }}&nbsp;
+            {{ time.Format $timeFormatMultiple . -}}
+        </li>
+        {{- end -}}
+    </ul>
+</div>
+{{- end -}}

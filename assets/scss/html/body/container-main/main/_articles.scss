@@ -45,10 +45,6 @@
       @include variables.font-size(article);
       @include variables.margin(0, m, 0, 0);
     }
-
-    .date {
-      @include variables.font-weight(bold);
-    }
   }
 
   &-summary {
