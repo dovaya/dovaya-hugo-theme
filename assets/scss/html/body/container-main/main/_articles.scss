@@ -26,9 +26,11 @@
     &-list {
       &-item {
         list-style: disclosure-closed;
-  
+        @include variables.margin(l, l);
+
         p {
           margin-block-start: 0;
+          margin-block-end: 0;
         }
       }
     }

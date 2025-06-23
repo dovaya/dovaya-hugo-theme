@@ -1,12 +1,17 @@
+{{ $timeFormat := "02 January 2006"  }}
+{{ $page := .}}
+{{ $page := .}}
 {{ $parentPage := .Parent}}
-{{ if and (not (.Eq site.Home)) (not ($parentPage.Eq site.Home)) }}
+{{ if and (not ($page.Eq site.Home)) (not ($parentPage.Eq site.Home)) }}
     <li class="main__articles-bundle-list-item">
-        <a href="{{ .RelPermalink }}">{{ partial "helper/translated-title.html" . }} | {{ partial "helper/translated-title" $parentPage }}</a>
-        <p>{{ .Summary }}</p>
+        <a href="{{ .RelPermalink }}">{{ partial "helper/translated-title.html" $page }} | {{ partial "helper/translated-title" $parentPage }}</a>
+        {{- with $page.Params.DisplayCreationDate -}}<p class="dates__single">{{ $page.Date.Format $timeFormat }}</p>{{- end -}}
+        <p>{{ $page.Summary }}</p>
     </li>
 {{ else }}
     <li class="main__articles-bundle-list-item">
-        <a href="{{ .RelPermalink }}">{{ partial "helper/translated-title.html" . }}</a>
-        <p>{{ .Summary }}</p>
+        <a href="{{ .RelPermalink }}">{{ partial "helper/translated-title.html" $page }}</a>
+        {{- with $page.Params.DisplayCreationDate -}}<p class="dates__single">{{ $page.Date.Format $timeFormat }}</p>{{- end -}}
+        <p>{{ $page.Summary }}</p>
     </li>
 {{ end }}
