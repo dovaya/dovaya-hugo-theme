@@ -24,11 +24,11 @@
   <ol class="main__breadcrumb__list">
     {{ range first $numAncestors $ancestors }}
     <li class="main__breadcrumb__list-item">
-      <a href="{{ .RelPermalink }}">{{ partial "helper/translated-title.html" . }}</a>
+      <a href="{{ .RelPermalink }}">{{ partial "helper/translated-linktitle.html" . }}</a>
     </li>
     {{ end }}
     <li class="main__breadcrumb__list-item--active">
-      <a aria-current="page" href="{{ .RelPermalink }}">{{ partial "helper/translated-title.html" . }}</a>
+      <a aria-current="page" href="{{ .RelPermalink }}">{{ partial "helper/translated-linktitle.html" . }}</a>
     </li>
   </ol>
 </nav>
