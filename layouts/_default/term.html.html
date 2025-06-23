@@ -1,22 +1,34 @@
 {{ define "main" }}
 
 <div class="main__articles">
-  {{ range .Pages.GroupBy "Type" }}
-    <div class="main__articles-bundle">
-      {{/*  <hr>  */}}
-      {{ $parentPage := site.GetPage (printf "/%s" .Key)}}
-      {{/*  <h2 class="main__articles-bundle-title"><a href="{{ $parentPage.RelPermalink }}">{{ partial "helper/translated-title.html" $parentPage  }}</a></h2>
-      {{ with $parentPage.Summary }}
-      <p>{{ . }}</p>
-      {{ end }}  */}}
-      <ul class="main__articles-bundle-list">
-        {{ range .ByTitle }}
-          {{ .Render "li"}}
-        {{ end }}
-      </ul>
-      {{/*  <hr>  */}}
-    </div>
-    {{ end }}
+  {{/*  <details class="related-pages">
+      <summary>
+        Related Pages
+      </summary>  */}}
+      <h2>
+        {{- with $svg:=resources.Get "svg/link-svgrepo-com.svg" | resources.Minify -}}
+        {{- $svg.Content | safeHTML -}}
+        {{- end -}}
+        &nbsp;
+        Related Pages
+      </h2>
+      {{ range .Pages.GroupBy "Type" }}
+        <div class="main__articles-bundle">
+          {{/*  <hr>  */}}
+          {{ $parentPage := site.GetPage (printf "/%s" .Key)}}
+          {{/*  <h2 class="main__articles-bundle-title"><a href="{{ $parentPage.RelPermalink }}">{{ partial "helper/translated-title.html" $parentPage  }}</a></h2>
+          {{ with $parentPage.Summary }}
+          <p>{{ . }}</p>
+          {{ end }}  */}}
+          <ul class="main__articles-bundle-list">
+            {{ range .ByTitle }}
+              {{ .Render "li"}}
+            {{ end }}
+          </ul>
+          {{/*  <hr>  */}}
+        </div>
+      {{ end }}
+  {{/*  </details>  */}}
 </div>
 
 {{ end }}
