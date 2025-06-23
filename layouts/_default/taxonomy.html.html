@@ -1,29 +1,56 @@
 {{ define "main" }}
 
-<div class="main__articles">
+{{ $pageTaxonomy := . }}
+{{ $pagesTermsAlphabetical := slice }}
 {{ range .Data.Terms.Alphabetical }}
+    {{ $pagesTermsAlphabetical = $pagesTermsAlphabetical | append .Page }}
+{{ end }}
+
+{{ $pagesTerms := slice }}
+{{ if (eq $pageTaxonomy.Params.sortArticlesBy "ByDate.Reverse")}}
+  {{ $pagesTerms = $pagesTermsAlphabetical.ByDate.Reverse }}
+{{ else if (eq $pageTaxonomy.Params.sortArticlesBy "ByWeight")}}
+  {{ $pagesTerms = $pagesTermsAlphabetical.ByWeight }}
+{{ else if (eq $pageTaxonomy.Params.sortArticlesBy "ByParam")}}
+  {{ $pagesTerms = $pagesTermsAlphabetical.ByParam .Params.SortingParam }}
+{{ else }}
+{{ $pagesTerms = $pagesTermsAlphabetical.ByTitle }}
+{{ end }}
+
+<div class="main__articles">
+{{ range $pagesTerms }}
   <div class="main__articles-group">
-    <h2 class="main__articles-group-title"><a href="{{ .Page.RelPermalink }}">{{ partial "helper/translated-title.html" .Page }}</a></h2>
-    {{ with .Page.Summary }}
+    <h2 class="main__articles-group-title"><a href="{{ .RelPermalink }}">{{ partial "helper/translated-title.html" . }}</a></h2>
+    {{ with .Summary }}
     <p>{{ . }}</p>
     {{ end }}
     <details class="related-pages">
         <summary>
           Related Pages
         </summary>
-        {{ range .Pages.GroupBy "Type" }}
+        {{ $pageTerm := . }}
+        {{ $pages := slice }}
+        {{ if (eq $pageTerm.Params.sortArticlesBy "ByDate.Reverse")}}
+          {{ $pages = .Pages.ByDate.Reverse }}
+        {{ else if (eq $pageTerm.Params.sortArticlesBy "ByWeight")}}
+          {{ $pages = .Pages.ByWeight }}
+        {{ else if (eq $pageTerm.Params.sortArticlesBy "ByParam")}}
+          {{ $pages = .Pages.ByParam .Params.SortingParam }}
+        {{ else }}
+        {{ $pages = .Pages.ByTitle }}
+        {{ end }}
+        {{ range $pages.GroupBy "Type" }}
           <div class="main__articles-bundle">
-            {{ $parentPage := site.GetPage (printf "/%s" .Key)}}
-              {{/*  <h3 class="main__articles-bundle-title"><a href="{{ $parentPage.RelPermalink }}">{{ partial "helper/translated-title.html" $parentPage  }}</a></h3>
-              {{ with $parentPage.Summary }}
-              <p>{{ . }}</p>
-              {{ end }}  */}}
-      
-              <ul class="main__articles-bundle-list">
-                {{ range .Pages }}
-                {{ .Render "li"}}
-                {{ end }}
-              </ul>
+          {{/*  {{ $parentPage := site.GetPage (printf "/%s" .Key)}}  */}}
+          {{/*  <h3 class="main__articles-bundle-title"><a href="{{ $parentPage.RelPermalink }}">{{ partial "helper/translated-title.html" $parentPage  }}</a></h3>
+          {{ with $parentPage.Summary }}
+          <p>{{ . }}</p>
+          {{ end }}  */}}
+            <ul class="main__articles-bundle-list">
+              {{ range .Pages }}
+              {{ .Render "li"}}
+              {{ end }}
+            </ul>
           </div>
         {{ end }}
     </details>

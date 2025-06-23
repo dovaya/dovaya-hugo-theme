@@ -1,5 +1,18 @@
 {{ define "main" }}
 
+{{ $pageTerm := . }}
+
+{{ $pages := slice }}
+{{ if (eq $pageTerm.Params.sortArticlesBy "ByDate.Reverse")}}
+  {{ $pages = $pageTerm.Pages.ByDate.Reverse }}
+{{ else if (eq $pageTerm.Params.sortArticlesBy "ByWeight")}}
+  {{ $pages = $pageTerm.Pages.ByWeight }}
+{{ else if (eq $pageTerm.Params.sortArticlesBy "ByParam")}}
+  {{ $pages = $pageTerm.Pages.ByParam .Params.SortingParam }}
+{{ else }}
+{{ $pages = $pageTerm.Pages.ByTitle }}
+{{ end }}
+
 <div class="main__articles">
   {{/*  <details class="related-pages">
       <summary>
@@ -12,16 +25,16 @@
         &nbsp;
         Related Pages
       </h2>
-      {{ range .Pages.GroupBy "Type" }}
+      {{ range $pages.GroupBy "Type" }}
         <div class="main__articles-bundle">
           {{/*  <hr>  */}}
-          {{ $parentPage := site.GetPage (printf "/%s" .Key)}}
+          {{/*  {{ $parentPage := site.GetPage (printf "/%s" .Key)}}  */}}
           {{/*  <h2 class="main__articles-bundle-title"><a href="{{ $parentPage.RelPermalink }}">{{ partial "helper/translated-title.html" $parentPage  }}</a></h2>
           {{ with $parentPage.Summary }}
           <p>{{ . }}</p>
           {{ end }}  */}}
           <ul class="main__articles-bundle-list">
-            {{ range .ByTitle }}
+            {{ range .Pages }}
               {{ .Render "li"}}
             {{ end }}
           </ul>
