@@ -15,40 +15,71 @@ $screen-sizes: (
 );
 
 $font-size: (
-  h1: clamp(1.5rem, 1vw, 2.5rem),
-  h2: clamp(1.25rem, 1vw, 2rem),
-  h3: clamp(1.15rem, 1vw, 1.5rem),
-  h4: clamp(1rem, 1vw, 1.5rem),
-  h5: clamp(1rem, 1vw, 1.25rem),
-  h6: clamp(0.9rem, 1vw, 1rem),
-  p: clamp(1rem, 1vw, 1.15rem),
+  // h1: clamp(1.5rem, 1vw, 2.5rem),
+  // h2: clamp(1.25rem, 1vw, 2rem),
+  // h3: clamp(1.15rem, 1vw, 1.5rem),
+  // h4: clamp(1rem, 1vw, 1.5rem),
+  // h5: clamp(1rem, 1vw, 1.25rem),
+  // h6: clamp(0.9rem, 1vw, 1rem),
+  // p: clamp(1rem, 1vw, 1.15rem),
 
-  breadcrumb: clamp(1rem, 1vw, 1.25rem),
-  taxonomy: clamp(1rem, 1vw, 1.15rem),
-  pagination: clamp(1.5rem, 1vw, 1.75rem),
-  article: clamp(1.25rem, 1vw, 1.75rem),
+  // breadcrumb: clamp(1rem, 1vw, 1.25rem),
+  // taxonomy: clamp(1rem, 1vw, 1.15rem),
+  // pagination: clamp(1.5rem, 1vw, 1.75rem),
+  // article: clamp(1.25rem, 1vw, 1.75rem),
 
-  topbar: clamp(1.5rem, 1vw, 2.5rem),
+  // topbar: clamp(1.5rem, 1vw, 2.5rem),
 
-  sidebar-author: clamp(1.5rem, 1vw, 2.5rem),
-  sidebar-description: clamp(1rem, 1vw, 1.15rem),
-  navigation: clamp(1rem, 1vw, 1.25rem),
-  sidebar-links: clamp(1rem, 1vw, 1.25rem),
-  sidebar-theme-toggle: clamp(0.85rem, 1vw, 1.15rem),
-  footer: clamp(0.75rem, 1vw, 0.9rem)
+  // sidebar-author: clamp(1.5rem, 1vw, 2.5rem),
+  // sidebar-description: clamp(1rem, 1vw, 1.15rem),
+  // navigation: clamp(1rem, 1vw, 1.25rem),
+  // sidebar-links: clamp(1rem, 1vw, 1.25rem),
+  // sidebar-theme-toggle: clamp(0.85rem, 1vw, 1.15rem),
+  // footer: clamp(0.75rem, 1vw, 0.9rem)
+  h1: 1.25rem,
+  h2: 1.15rem,
+  h3: 1rem,
+  h4: 0.9rem,
+  h5: 0.8rem,
+  h6: 0.7rem,
+  p: 1rem,
+
+  breadcrumb: 1rem,
+  taxonomy: 1rem,
+  pagination: 1.5rem,
+  article: 1.25rem,
+
+  topbar: 1.5rem,
+
+  sidebar-author: 1.5rem,
+  sidebar-description: 1rem,
+  navigation: 1.15rem,
+  sidebar-links: 1.15rem,
+  sidebar-theme-toggle: 0.9rem,
+  footer: 0.85rem,
 );
 
 $spacing: (
-  xxl: clamp(1.5rem, 1vw, 2rem),
-  xl: clamp(1.25rem, 1vw, 1.5rem),
-  l: clamp(1rem, 1vw, 1.25rem),
-  m: clamp(0.75rem, 1vw, 1rem),
-  s: clamp(0.5rem, 1vw, 0.75rem),
-  xs: clamp(0.25rem, 1vw, 0.5rem),
-  xxs: clamp(0.1rem, 1vw, 0.25rem),
+  // xxl: clamp(1.5rem, 1vw, 2rem),
+  // xl: clamp(1.25rem, 1vw, 1.5rem),
+  // l: clamp(1rem, 1vw, 1.25rem),
+  // m: clamp(0.75rem, 1vw, 1rem),
+  // s: clamp(0.5rem, 1vw, 0.75rem),
+  // xs: clamp(0.25rem, 1vw, 0.5rem),
+  // xxs: clamp(0.1rem, 1vw, 0.25rem),
+  // 0: 0,
+  // sidebar: clamp(0.5rem, 1vw, 1rem),
+  // topbar: clamp(4rem, 1vw, 5rem)
+  xxl: clamp(1.25rem, 1vw, 1.5rem),
+  xl: clamp(1rem, 1vw, 1.25rem),
+  l: clamp(0.75rem, 1vw, 1rem),
+  m: clamp(0.5rem, 1vw, 0.75rem),
+  s: clamp(0.25rem, 1vw, 0.5rem),
+  xs: clamp(0.15rem, 1vw, 0.25rem),
+  xxs: clamp(0.1rem, 1vw, 0.1rem),
   0: 0,
-  sidebar: clamp(0.5rem, 1vw, 1rem),
-  topbar: clamp(4rem, 1vw, 5rem)
+  sidebar: clamp(0.5rem, 1vw, 0.5rem),
+  topbar: clamp(3rem, 1vw, 4rem)
 );
 
 // Border radius.
