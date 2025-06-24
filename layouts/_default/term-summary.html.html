@@ -8,7 +8,7 @@
     <div class="main__article-summary">
         <p>{{ .Summary }}</p>
     </div>
-    {{ with $page.Resources.GetMatch "*images/feature.*" }}
+    {{ range $page.Resources.Match "*images/feature*" }}
     <div class="main__article-picture">
         <picture>
             <img src="{{ .Permalink }}" alt="{{ $page.Title }}" type="{{ .MediaType }}"/>
