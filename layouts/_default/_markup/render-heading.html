@@ -1,4 +1,14 @@
-<h{{ .Level }} id="{{ .Anchor }}" {{- with .Attributes.class }} class="{{ . }}" {{- end }}>
+{{ $anchorParts := split .Anchor "-"}}
+{{ $anchorSanitized := "" }}
+{{ range $anchorPart := $anchorParts }}
+  {{ if not (strings.Contains $anchorPart "hugoshortcode") }}
+    {{ $anchorSanitized = (printf "%s-%s" $anchorSanitized $anchorPart) }}
+  {{ end }}
+{{ end}}
+
+{{ $anchorSanitized = (strings.TrimPrefix "-" $anchorSanitized) }}
+
+<h{{ .Level }} id="{{ $anchorSanitized }}" {{- with .Attributes.class }} class="{{ . }}" {{- end }}>
   {{ .Text }}
-  {{/*  <a href="#{{ .Anchor }}">#</a>  */}}
+  {{/*  <a href="#{{ $anchorSanitized }}">#</a>  */}}
 </h{{ .Level }}>
