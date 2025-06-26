@@ -4,6 +4,7 @@
 @use "../../colors" as colors;
 
 svg {
-  width: 1em;
+  width: auto;
   height: 1em;
+  vertical-align: text-top;
 }
