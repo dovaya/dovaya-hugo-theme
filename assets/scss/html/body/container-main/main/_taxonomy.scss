@@ -20,21 +20,31 @@
 
     &-item {
       @include variables.font-size(taxonomy);
-      @include variables.font-weight(bold);
+      // @include variables.font-weight(bold);
       
+      @include variables.border(true, true, true, true, accent);
+      @include variables.border-radius;
+      @include variables.padding(xs, xs, s, s);
+      @include variables.margin(xs, xs, 0, 0);
+
       &.item-taxonomy {
-        &::after {
-          content: ":";
-        }
+   
       }
 
-      // &.item-term {
-      // &:last-child {
-      //   ::after {
-      //     content: "|";
-      //   }
-      // }
-      // }
+      &.item-term {
+        a {
+          @include variables.color(text);
+  
+          &:visited {
+            @include variables.color(text);
+          }
+  
+          &:hover,
+          &:focus {
+            @include variables.color(accent-lighter);
+          }
+        }
+      }
     }
   }
 }
