@@ -1,0 +1,21 @@
+@use "sass:map";
+@use "../../../variables" as variables;
+@use "../../../sizes" as sizes;
+@use "../../../colors" as colors;
+
+.container-sidebar-toggle {
+  position: fixed;
+  top: 0;
+  right: 3%;
+  // width: min(10vh, 4rem);
+  height: min(10vh, 4rem);
+  // @include variables.padding(l, l, 0, 0);
+  @include variables.padding(l, l, l, l);
+  z-index: 22;
+  background-color: transparent;
+
+  // display: block;
+  display: flex;
+  justify-content: center;  /* Horizontal centering */
+  align-items: center;      /* Vertical centering */
+}

@@ -12,5 +12,5 @@
   @include variables.background-color(background);
   @include variables.border(false, true);
 
-  @include variables.padding(m, m);
+  @include variables.padding(l, l);
 }

@@ -26,7 +26,7 @@ body {
   grid-template-columns: auto min(120rem, 70%);
   grid-template-rows: 100%;
 
-  .sidebar-toggle {
+  .container-sidebar-toggle {
     display: none;
   }
 
@@ -49,11 +49,10 @@ body {
   @media only screen and (max-width: map.get(sizes.$screen-sizes, "breakpoint-md")) {
     display: grid;
     grid-template-columns: 3% 94% 3%;
-    // grid-template-columns: map.get(sizes.$spacing, "xl") auto map.get(sizes.$spacing, "xl") ;
-    grid-template-rows: map.get(sizes.$spacing, "topbar") auto;
+    grid-template-rows: min(10vh, 4rem) auto;
 
-    .sidebar-toggle {
-      display: block;
+    .container-sidebar-toggle {
+      display: flex;
     }
 
     .container-topbar {

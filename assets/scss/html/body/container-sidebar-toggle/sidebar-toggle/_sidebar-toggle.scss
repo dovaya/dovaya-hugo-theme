@@ -1,13 +1,9 @@
 @use "sass:map";
-@use "../../../variables" as variables;
-@use "../../../sizes" as sizes;
-@use "../../../colors" as colors;
+@use "../../../../variables" as variables;
+@use "../../../../sizes" as sizes;
+@use "../../../../colors" as colors;
 
 .sidebar-toggle {
-  position: fixed;
-  @include variables.set-spacing-of-element("top", m);
-  right: 5%;
-  z-index: 22;
 
   margin: 0;
   padding: 0;
@@ -26,8 +22,8 @@
 
   &-svg {
     @include variables.set-color-of-element("fill", text);
-    @include variables.set-size-of-element("width", topbar);
-    @include variables.set-size-of-element("height", topbar);
+    @include variables.set-size-of-element("width", topbar-sidebar-toggle);
+    @include variables.set-size-of-element("height", topbar-sidebar-toggle);
 
     rect {
       transform-origin: center;
@@ -44,8 +40,7 @@
     .open & {
       // stylelint-disable max-nesting-depth
       rect {
-        y: 45px;
-        fill: var(--color-text-alt);
+        y: 34px;
 
         &:nth-of-type(1) {
           transform: rotate(45deg);
