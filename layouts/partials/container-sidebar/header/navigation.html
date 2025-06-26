@@ -49,7 +49,7 @@
             {{ if .IsTranslated }}
             <li class="nav__main-list-item">
                 <span aria-label="Go to Submenu {{ .Name }}" class="nav__sub-list-trigger">
-                    {{ with resources.Get "svg/language.svg" | resources.Minify }}
+                    {{ with resources.Get "svg/language-svgrepo-com.svg" | resources.Minify }}
                     {{ .Content | safeHTML }}
                     {{ end }}
                 </span>
