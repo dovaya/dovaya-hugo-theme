@@ -1,3 +1,5 @@
 {{- with .Params.svg -}}
-    {{- partial "helper/svg.html" . -}}&nbsp;
+    {{- partial "helper/svg.html" . -}}
+{{- else -}}
+    {{- partial "helper/svg.html" "link-svgrepo-com" -}}
 {{- end -}}

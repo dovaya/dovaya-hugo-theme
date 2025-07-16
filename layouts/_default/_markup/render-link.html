@@ -29,7 +29,7 @@
       {{- $href = printf "%s#%s" $href . -}}
     {{- end -}}
     <a href="{{ $href }}" title="{{ $title }}">
-      {{- partial "helper/title-svg.html" $targetPage -}}
+      {{- partial "helper/title-svg.html" $targetPage -}}&nbsp;
       {{- .Text -}}
     </a>
   {{- else if or ($.PageInner.Resources.Get $path) (resources.Get $path) -}}

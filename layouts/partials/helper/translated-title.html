@@ -1,16 +1,15 @@
-{{- with .Params.svg -}}
-    {{- partial "helper/svg.html" . -}}&nbsp;
-{{- end -}}
+{{- partial "helper/title-svg.html" . -}}&nbsp;
+{{- $text := .Title | markdownify -}}
 {{- if .IsTranslated -}}
     {{- if or (eq .Kind "taxonomy") (eq .Kind "term") -}}
-        {{- if (T (replace (replace (printf "%s" .Title) " " "") "-" "")) -}}
-        {{- T (replace (replace (printf "%s" .Title) " " "") "-" "") -}}
+        {{- if (T (replace (replace (printf "%s" $text) " " "") "-" "")) -}}
+        {{- T (replace (replace (printf "%s" $text) " " "") "-" "") -}}
         {{- else -}}
-        {{- .Title -}}
+        {{- $text -}}
         {{- end -}}
     {{- else -}}
-    {{- .Title -}}
+    {{- $text -}}
     {{- end -}}
 {{- else -}}
-{{- .Title -}}
+{{- $text -}}
 {{- end -}}
