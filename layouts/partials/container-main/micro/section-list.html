@@ -1,0 +1,38 @@
+{{ $currentPage := . }}
+
+{{ with $sectionsJSON := $currentPage.Params.Sections }}
+<div class="taxonomy">
+    {{ range $sectionJSON := $sectionsJSON }}
+        {{ $sectionPageName := $sectionJSON.section.name }}
+        {{ $sectionPage := (site.GetPage ($sectionJSON.section.link)) }}
+        <ul class="taxonomy__list">
+            <li class="taxonomy__list-item item-taxonomy">
+                <a href="{{ $sectionPage.RelPermalink }}" title="{{ $sectionPage.LinkTitle }}">
+                    {{ if eq $sectionPageName "" }}
+                    {{ partial "helper/translated-title.html" $sectionPage }}
+                    {{ else if not (eq $sectionPageName .LinkTitle )}} 
+                    {{ partial "helper/title-svg.html" $sectionPage }}&nbsp;{{ $sectionPageName }}
+                    {{ else }}
+                    {{ partial "helper/translated-title.html" $sectionPage }}
+                    {{ end }}
+                </a>
+            </li>
+            {{ range $pageJSON := $sectionJSON.section.pages }}
+                {{ $pagePageName := $pageJSON.page.name }}
+                {{ $pagePage := (site.GetPage ($pageJSON.page.link)) }}
+                <li class="taxonomy__list-item item-term">
+                    <a href="{{ $pagePage.RelPermalink }}" title="{{ $pagePage.LinkTitle }}">
+                        {{ if eq $pagePageName "" }}
+                        {{ partial "helper/translated-title.html" $pagePage }}
+                        {{ else if not (eq $pagePageName .LinkTitle )}} 
+                        {{ partial "helper/title-svg.html" $pagePage }}&nbsp;{{ $pagePageName }}
+                        {{ else }}
+                        {{ partial "helper/translated-title.html" $pagePage }}
+                        {{ end }}
+                    </a>
+                </li>
+            {{ end }}
+        </ul>
+    {{ end }}
+</div>
+{{ end }}
