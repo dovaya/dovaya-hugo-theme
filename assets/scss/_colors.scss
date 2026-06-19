@@ -55,7 +55,7 @@ $theme-light: (
   accent-darker: $accent-darker-20,
 
   border-main-dark: $black-60,
-  border-main-light: $black-60,
+  border-main-light: $black-60
 );
 
 // Colour map.
@@ -78,19 +78,45 @@ $theme-dark: (
   accent-darker: $accent-darker-40,
 
   border-main-dark: $black-10,
-  border-main-light: $black-10,
+  border-main-light: $black-10
 );
 
-body {
+html[data-theme="dark"] {
   color-scheme: dark;
   @each $name, $color in $theme-dark {
     --color-#{$name}: #{$color};
   }
 
-  &.light-mode {
-    color-scheme: light;
-    @each $name, $value in $theme-light {
-      --color-#{$name}: #{$value};
-    }
+  .theme-icon.dark {
+    display: inline;
+  }
+  .theme-icon.light {
+    display: none;
+  }
+  .logo.dark {
+    display: inline;
+  }
+  .logo.light {
+    display: none;
+  }
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+  @each $name, $value in $theme-light {
+    --color-#{$name}: #{$value};
+  }
+
+  .theme-icon.dark {
+    display: none;
+  }
+  .theme-icon.light {
+    display: inline;
+  }
+  .logo.dark {
+    display: none;
+  }
+  .logo.light {
+    display: inline;
   }
 }
