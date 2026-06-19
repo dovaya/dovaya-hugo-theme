@@ -1,6 +1,6 @@
 baseURL: "https://example.com"
 timeZone: "Europe/Zurich"
-languageCode: "en-US"
+locale: "en-US"
 theme: "dovaya-hugo-theme"
 module:
   hugoVersion:
@@ -57,7 +57,7 @@ languages:
   de:
     weight: 1
     disabled: false
-    languageCode: de-DE
+    locale: de-DE
     languageDirection: ltr
     languageName: Deutsch
     title: Example Webseite
@@ -72,7 +72,7 @@ languages:
   en:
     weight: 2
     disabled: false
-    languageCode: en-US
+    locale: en-US
     languageDirection: ltr
     languageName: English
     title: Example Website

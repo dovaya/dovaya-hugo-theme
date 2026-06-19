@@ -2,7 +2,7 @@ baseURL: "https://example.com"
 title: "Example Title"
 copyright: "2025. Example. All rights reserved."
 timeZone: "Europe/Zurich"
-languageCode: "en-US"
+locale: "en-US"
 theme: "dovaya-hugo-theme"
 module:
   hugoVersion:
