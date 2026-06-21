@@ -26,7 +26,7 @@ $black-0: #000000;
 
 $box-shadow: rgb(0 0 0 / 0.2);
 
-$accent: hsl(255, 32%, 62%); //#3ebcb6;
+$accent: #8f7fbd; //#3ebcb6;
 $accent-lighter-20: color.scale($accent, $lightness: +20%, $space: oklch);
 $accent-lighter-40: color.scale($accent, $lightness: +40%, $space: oklch);
 $accent-darker-5: color.scale($accent, $lightness: -5%, $space: oklch);
