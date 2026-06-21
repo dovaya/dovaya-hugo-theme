@@ -4,9 +4,8 @@
 @use "../../../../../colors" as colors;
 
 .sidebar-avatar {
-
-  max-width: min(70%, 300px);
-  max-height: min(70%, 300px);
+  max-width: clamp(10rem, 10vw, 70%);
+  max-height: clamp(10rem, 10vw, 70%);
 
   img {
     border-radius: 50%;
