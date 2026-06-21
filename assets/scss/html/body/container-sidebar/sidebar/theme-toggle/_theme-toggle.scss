@@ -1,0 +1,23 @@
+@use "sass:map";
+@use "../../../../../variables" as variables;
+@use "../../../../../sizes" as sizes;
+@use "../../../../../colors" as colors;
+
+button.theme-toggle {
+    @include variables.padding(p, 0, 0, 0);
+    @include variables.margin(0, 0, 0, 0);
+    background: transparent;
+    border: none;
+
+    @include variables.set-size-of-element("height", sidebar-theme-toggle);
+    @include variables.set-size-of-element("width", sidebar-theme-toggle);
+    margin-inline: auto;
+
+    align-self: center;
+
+    &:enabled:hover {
+        cursor: pointer;
+        background: transparent;
+        @include variables.color(accent);
+    }
+}
