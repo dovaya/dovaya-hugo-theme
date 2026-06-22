@@ -22,12 +22,10 @@
       // @include variables.font-weight(bold);
 
       @include variables.border(true, true, true, true, accent);
-      @include variables.border-radius;
-      @include variables.padding(xs, xs, s, s);
-      @include variables.margin(xs, xs, 0, 0);
-
-      &.item-taxonomy {
-      }
+      border-radius: 2em;
+      padding-block: 0.1em;
+      padding-inline: 0.5em;
+      margin-block: 0.25em;
 
       &.item-term {
         a {
