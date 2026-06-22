@@ -47,7 +47,7 @@
 
     box-shadow: none;
 
-    &.open {
+    &[aria-hidden = "false"] {
       pointer-events: auto;
       box-shadow: 0 0 2rem 0 var(--color-border-main-dark);
 

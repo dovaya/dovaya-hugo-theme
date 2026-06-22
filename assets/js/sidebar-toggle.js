@@ -1,54 +1,37 @@
 const toggle = document.querySelector(".sidebar-toggle");
 const sidebar = document.querySelector(".container-sidebar");
 const main = document.querySelector(".container-main");
-
-function navOpen() {
-  sidebar.classList.add("open");
-  sidebar.setAttribute("aria-hidden", "false");
-  toggle.classList.add("open");
-  toggle.setAttribute("aria-expanded", "true");
-  document.body.addEventListener("keydown", closeOnESC);
-}
-
-function navClose() {
-  sidebar.classList.remove("open");
-  sidebar.setAttribute("aria-hidden", "true");
-  toggle.classList.remove("open");
-  toggle.setAttribute("aria-expanded", "false");
-  document.body.removeEventListener("keydown", closeOnESC);
-}
+const links = document.querySelectorAll(".container-sidebar a");
 
 function closeOnESC(e) {
   if (e.key === "Escape") {
-    navClose();
+    setNav(false);
   }
 }
 
-toggle.addEventListener("click", function (e) {
+function setNav(open) {
+  toggle.setAttribute("aria-expanded", open);
+  sidebar.setAttribute("aria-hidden", !open);
+
+  document.body[open ? "addEventListener" : "removeEventListener"](
+    "keydown",
+    closeOnESC
+  );
+}
+
+toggle.addEventListener("click", (e) => {
   e.preventDefault();
-  if (sidebar.classList.contains("open")) {
-    navClose();
-  } else {
-    navOpen();
+
+  const open = toggle.getAttribute("aria-expanded") !== "true";
+  setNav(open);
+});
+
+main.addEventListener("click", () => {
+  if (toggle.getAttribute("aria-expanded") === "true") {
+    setNav(false);
   }
 });
 
-main.addEventListener("click", function (e) {
-  if (sidebar.classList.contains("open")) {
-    navClose();
-  }
+links.forEach((link) => {
+  link.addEventListener("click", () => setNav(false));
 });
-
-// Close the nav sidebar after click (needed for anchor links).
-const links = document.querySelectorAll(".container-sidebar a");
-links.forEach(function (link) {
-  link.addEventListener("click", function (e) {
-    navClose();
-  });
-});
-
-// Move focus back to button efter user tab out of last link.
-if (links.length) {
-  const lastlink = [].slice.call(links).pop();
-  lastlink.addEventListener("blur", () => toggle.focus());
-}
