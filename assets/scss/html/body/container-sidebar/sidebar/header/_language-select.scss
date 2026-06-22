@@ -1,0 +1,23 @@
+@use "sass:map";
+@use "../../../../../variables" as variables;
+@use "../../../../../sizes" as sizes;
+@use "../../../../../colors" as colors;
+
+.language-select {
+    ul {
+        display: inline flex;
+        justify-content: center;
+        align-items: center;
+        @include variables.set-spacing-of-element("column-gap", m);
+
+        list-style-type: none;
+        text-align: start;
+
+        margin: 0;
+        padding: 0;
+
+        li {
+            @include variables.font-size(navigation);
+        }
+    }
+}

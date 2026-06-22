@@ -4,6 +4,8 @@
 @use "../../../../../colors" as colors;
 
 .sidebar-author {
+  text-align: center;
+
   h1 {
     @include variables.margin(sidebar, sidebar);
     @include variables.font-size(sidebar-author);

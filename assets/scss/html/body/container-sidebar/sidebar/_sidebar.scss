@@ -13,21 +13,22 @@
   justify-content: center;
 
   margin: auto;
-  text-align: center;
 
-  a {
+  a,
+  span.sublist-trigger {
     @include variables.color(text-alt);
 
     &:visited {
-    @include variables.color(text-alt);
+      @include variables.color(text-alt);
     }
 
     &:hover,
     &.current,
     &[aria-current="page"],
     &[aria-current="true"] {
+      cursor: pointer;
       @include variables.color(accent);
+      @include variables.border-color(accent);
     }
   }
 }
-

@@ -4,7 +4,6 @@
 @use "../../../../../colors" as colors;
 
 .sidebar > header {
-
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -12,19 +11,4 @@
 
   align-items: center;
   justify-content: center;
-
-  a {
-    @include variables.color(text);
-
-    &:visited {
-      @include variables.color(text);
-    }
-
-    &:hover,
-    &.current,
-    &[aria-current="page"],
-    &[aria-current="true"] {
-      @include variables.color(accent);
-    }
-  }
 }

@@ -4,6 +4,14 @@
 @use "../../../../../colors" as colors;
 
 .sidebar > footer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  @include variables.set-spacing-of-element("row-gap", sidebar);
+
+  align-items: center;
+  justify-content: center;
+
   p {
     @include variables.font-size(footer);
     @include variables.margin(0, 0);

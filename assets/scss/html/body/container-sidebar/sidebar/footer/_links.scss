@@ -16,9 +16,6 @@
 
   a.svg {
     svg {
-      // width: auto;
-      // @include variables.set-size-of-element(height, sidebar-links);
-  
       @include variables.set-size-of-element(width, sidebar-links);
       height: auto;
     }

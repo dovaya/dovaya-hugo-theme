@@ -1,71 +1,88 @@
-{{ $currentPage := .}}
+{{- $currentPage := .}}
 
-<div class="nav">
-    <nav class="nav__main">
-        <ul class="nav__main-list">
-            {{ range site.Menus.main -}}
-                {{ if .HasChildren -}}
-                <li class="nav__main-list-item">
-                    {{ if $currentPage.IsMenuCurrent .Menu . -}}
-                    <span aria-label="Go to Submenu {{ .Name }}" aria-current="page" class="nav__sub-list-trigger">{{ partial "helper/title-svg.html" . }}&nbsp;{{ .Name }}{{ with .Post }}&nbsp;{{ . }}{{ end }}</span>
-                    {{ else if $currentPage.HasMenuCurrent .Menu . -}}
-                    <span aria-label="Go to Submenu {{ .Name }}" aria-current="true" class="nav__sub-list-trigger">{{ partial "helper/title-svg.html" . }}&nbsp;{{ .Name }}{{ with .Post }}&nbsp;{{ . }}{{ end }}</span>
-                    {{ else -}}
-                    <span aria-label="Go to Submenu {{ .Name }}" class="nav__sub-list-trigger">{{ partial "helper/title-svg.html" . }}&nbsp;{{ .Name }}{{ with .Post }}&nbsp;{{ . }}{{ end }}</span>
-                    {{ end -}}
-                    <ul class="nav__sub-list">
-                        <li class="nav__sub-list-item">
-                            {{ if $currentPage.IsMenuCurrent .Menu . -}}
-                            <a aria-label="Go to {{ .Name }}" aria-current="page" href="{{ .URL }}">{{ partial "helper/title-svg.html" . }}&nbsp;{{ with T "Index"}}{{ . }}{{ else }}Index{{ end }}{{ with .Post }}&nbsp;{{ . }}{{ end }}</a>
-                            {{ else -}}
-                            <a aria-label="Go to {{ .Name }}" href="{{ .URL }}">{{ partial "helper/title-svg.html" . }}&nbsp;{{ with T "Index"}}{{ . }}{{ else }}Index{{ end }}{{ with .Post }}&nbsp;{{ . }}{{ end }}</a>
-                            {{ end -}}
-                        </li>
-                        {{ range .Children -}}
-                        <li class="nav__sub-list-item">
-                            {{ if $currentPage.IsMenuCurrent .Menu . -}}
-                            <a aria-label="Go to {{ .Name }}" aria-current="page" href="{{ .URL }}" >{{ partial "helper/title-svg.html" . }}&nbsp;{{ .Name }}{{ with .Post }}&nbsp;{{ . }}{{ end }}</a>
-                            {{ else if $currentPage.HasMenuCurrent .Menu . -}}
-                            <a aria-label="Go to {{ .Name }}" aria-current="true" href="{{ .URL }}">{{ partial "helper/title-svg.html" . }}&nbsp;{{ .Name }}{{ with .Post }}&nbsp;{{ . }}{{ end }}</a>
-                            {{ else -}}
-                            <a aria-label="Go to {{ .Name }}" href="{{ .URL }}">{{ partial "helper/title-svg.html" . }}&nbsp;{{ .Name }}{{ with .Post }}&nbsp;{{ . }}{{ end }}</a>
-                            {{ end }}
-                        </li>
-                        {{ end -}}
-                    </ul>
+<nav class="navigation">
+    <ul>
+        {{- range site.Menus.main -}}
+        {{- if .HasChildren -}}
+        <li>
+            {{- if $currentPage.IsMenuCurrent .Menu . -}}
+            <span aria-label="Open Submenu {{ .Name }}" aria-current="page" class="sublist-trigger">
+                {{- partial "helper/title-svg.html" . -}}
+                <span>{{- .Name -}}{{- with .Post -}}&nbsp;{{- . -}}{{- end -}}</span>
+            </span>
+            <ul class="sublist" aria-expanded="true">
+            {{- else if $currentPage.HasMenuCurrent .Menu . -}}
+            <span aria-label="Open Submenu {{ .Name }}" aria-current="true" class="sublist-trigger">
+                {{- partial "helper/title-svg.html" . -}}
+                <span>{{- .Name -}}{{- with .Post -}}&nbsp;{{- . -}}{{- end -}}</span>
+            </span>
+            <ul class="sublist" aria-expanded="true">
+            {{- else -}}
+            <span aria-label="Open Submenu {{ .Name }}" class="sublist-trigger">
+                {{- partial "helper/title-svg.html" . -}}
+                <span>{{- .Name -}}{{- with .Post -}}&nbsp;{{- . -}}{{- end -}}</span>
+            </span>
+            <ul class="sublist">
+            {{- end -}}
+                <li>
+                    {{- if $currentPage.IsMenuCurrent .Menu . -}}
+                    <a aria-label="Go to {{ .Name }}" aria-current="page" href="{{- .URL -}}">
+                        {{- partial "helper/title-svg.html" . -}}
+                        <span>{{- with T "Index"}}{{- . -}}{{- else -}}Index{{- end -}}
+                            {{- with .Post -}}&nbsp;{{- . -}}{{- end -}}
+                        </span>
+                    </a>
+                    {{- else -}}
+                    <a aria-label="Go to {{ .Name }}" href="{{- .URL -}}">
+                        {{- partial "helper/title-svg.html" . -}}
+                        <span>{{- with T "Index"}}{{- . -}}{{- else -}}Index{{- end -}}
+                            {{- with .Post -}}&nbsp;{{- . -}}{{- end -}}
+                        </span>
+                    </a>
+                    {{- end -}}
                 </li>
-                {{ else -}}
-                <li class="nav__main-list-item">
-                    {{ if $currentPage.IsMenuCurrent .Menu . -}}
-                    <a aria-label="Go to {{ .Name }}" aria-current="page" href="{{ .URL }}">{{ partial "helper/title-svg.html" . }}&nbsp;{{ .Name }}{{ with .Post }}&nbsp;{{ . }}{{ end }}</a>
-                    {{ else if $currentPage.HasMenuCurrent .Menu . -}}
-                    <a aria-label="Go to {{ .Name }}" aria-current="true" href="{{ .URL }}">{{ partial "helper/title-svg.html" . }}&nbsp;{{ .Name }}{{ with .Post }}&nbsp;{{ . }}{{ end }}</a>
-                    {{ else -}}
-                    <a aria-label="Go to {{ .Name }}" href="{{ .URL }}">{{ partial "helper/title-svg.html" . }}&nbsp;{{ .Name }}{{ with .Post }}&nbsp;{{ . }}{{ end }}</a>
-                    {{ end -}}
+                {{- range .Children -}}
+                <li>
+                    {{- if $currentPage.IsMenuCurrent .Menu . -}}
+                    <a aria-label="Go to {{ .Name }}" aria-current="page" href="{{- .URL -}}">
+                        {{- partial "helper/title-svg.html" . -}}
+                        <span>{{- .Name -}}{{- with .Post -}}&nbsp;{{- . -}}{{- end -}}</span>
+                    </a>
+                    {{- else if $currentPage.HasMenuCurrent .Menu . -}}
+                    <a aria-label="Go to {{ .Name }}" aria-current="true" href="{{- .URL -}}">
+                        {{- partial "helper/title-svg.html" . -}}
+                        <span>{{- .Name -}}{{- with .Post -}}&nbsp;{{- . -}}{{- end -}}</span>
+                    </a>
+                    {{- else -}}
+                    <a aria-label="Go to {{ .Name }}" href="{{- .URL -}}">
+                        {{- partial "helper/title-svg.html" . -}}
+                        <span>{{- .Name -}}{{- with .Post -}}&nbsp;{{- . -}}{{- end -}}</span>
+                    </a>
+                    {{- end -}}
                 </li>
-                {{ end -}}
-            {{ end }}
-            {{ if .IsTranslated }}
-            <li class="nav__main-list-item">
-                <span aria-label="Go to Submenu {{ .Name }}" class="nav__sub-list-trigger">
-                    {{ with resources.Get "svg/language-svgrepo-com.svg" | resources.Minify }}
-                    {{ .Content | safeHTML }}
-                    {{ end }}
-                </span>
-              <ul class="nav__sub-list">
-                {{ range .AllTranslations }}
-                <li class="nav__sub-list-item">
-                    {{ if eq $currentPage .}}
-                        <a aria-label="Go to {{ .Name }}" aria-current="page" href="{{ .RelPermalink }}">{{ upper .Language.Lang }}</a>
-                    {{ else }}
-                        <a aria-label="Go to {{ .Name }}" href="{{ .RelPermalink }}" >{{ upper .Language.Lang }}</a>
-                    {{ end }}
-                </li>
-                {{ end }}
-              </ul>
-            </li>
-            {{ end }}
-        </ul>
-    </nav>
-</div>
+                {{- end -}}
+            </ul>
+        </li>
+        {{- else -}}
+        <li>
+            {{- if $currentPage.IsMenuCurrent .Menu . -}}
+            <a aria-label="Go to {{ .Name }}" aria-current="page" href="{{- .URL -}}">
+                {{- partial "helper/title-svg.html" . -}}
+                <span>{{- .Name -}}{{- with .Post -}}&nbsp;{{- . -}}{{- end -}}</span>
+            </a>
+            {{- else if $currentPage.HasMenuCurrent .Menu . -}}
+            <a aria-label="Go to {{ .Name }}" aria-current="true" href="{{- .URL -}}">
+                {{- partial "helper/title-svg.html" . -}}
+                <span>{{- .Name -}}{{- with .Post -}}&nbsp;{{- . -}}{{- end -}}</span>
+            </a>
+            {{- else -}}
+            <a aria-label="Go to {{ .Name }}" href="{{- .URL -}}">
+                {{- partial "helper/title-svg.html" . -}}
+                <span>{{- .Name -}}{{- with .Post -}}&nbsp;{{- . -}}{{- end -}}</span>
+            </a>
+            {{- end -}}
+        </li>
+        {{- end -}}
+        {{- end -}}
+    </ul>
+</nav>
