@@ -45,7 +45,8 @@ params:
         url: mailto:name@example.com
         svg: mail-svgrepo-com
         position: 3
-    description: Official Website of Example.
+    description:
+      - Official Website of Example.
   images:
   - logo.jpg
 

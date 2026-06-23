@@ -64,7 +64,8 @@ languages:
     copyright: 2025. Example. Alle Rechte vorbehalten.
     params:
       author:
-        description: Offizielle Webseite von Example.
+        description:
+        - Offizielle Webseite von Example.
     taxonomies:
       areas: areas
       status: status
@@ -79,7 +80,8 @@ languages:
     copyright: 2025. Example. All rights reserved.
     params:
       author:
-        description: Official Website of Example.
+        description:
+        - Official Website of Example.
     taxonomies:
       areas: areas
       status: status
