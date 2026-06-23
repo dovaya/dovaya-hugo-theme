@@ -71,6 +71,7 @@ languages:
       areas: areas
       status: status
       tags: tags
+    description: Offizielle Website von Example.
   en:
     weight: 2
     disabled: false
@@ -87,3 +88,4 @@ languages:
       areas: areas
       status: status
       tags: tags
+    description: Official Website of Example.

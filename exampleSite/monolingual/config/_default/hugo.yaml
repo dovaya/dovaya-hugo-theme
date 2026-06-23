@@ -50,7 +50,8 @@ params:
   images:
   - logo.jpg
   launchYear: 2025
-
+  description: Official Website of Example.
+  
 permalinks:
   page:
     news: "/news/:year/:month/:slug"
