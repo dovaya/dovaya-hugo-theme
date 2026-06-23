@@ -13,12 +13,8 @@
   height: 100vh;
   max-height: 100vh;
 
-  display: block;
-
-  padding-block-start: clamp(map.get(sizes.$spacing, "xxl"), 5vw, 12.5%);
-  padding-block-end: clamp(map.get(sizes.$spacing, "xxl"), 5vw, 12.5%);
-  padding-inline-start: clamp(map.get(sizes.$spacing, "xxl"), 5vw, 12.5%);
-  padding-inline-end: clamp(map.get(sizes.$spacing, "xxl"), 5vw, 12.5%);
+  padding-block: 12.5%;
+  padding-inline: 20%;
 
   // colors
   @include variables.color(text-alt);

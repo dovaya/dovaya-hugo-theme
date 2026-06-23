@@ -2,8 +2,8 @@
 {{- $title := "" -}}
 {{- if .Title -}}
 {{- $title = .Title -}}
-{{/*  {{- else -}}
-{{- $title = ((.Text | strings.FirstUpper ) | strings.TrimSpace ) -}}  */}}
+{{- else -}}
+{{- $title = ((.Text | strings.FirstUpper ) | strings.TrimSpace ) -}}
 {{- end -}}
 
 {{- $u := urls.Parse .Destination -}}
@@ -11,11 +11,10 @@
 {{- if strings.HasPrefix $u.String "#" -}}
   {{- $href = printf "%s#%s" .PageInner.RelPermalink $u.Fragment -}}
   <a href="{{ $href }}" title="{{ $title }}">
-      {{- with $svg:=resources.Get "svg/link-svgrepo-com.svg" | resources.Minify -}}
-      {{- $svg.Content | safeHTML -}}
-      {{- end -}}
-      &nbsp;
-      {{- .Text -}}
+    <span class="text-with-icon">
+      {{- partial "helper/svg.html" "link-svgrepo-com"}}
+      <span>{{- .Text -}}</span>
+    </span>
   </a>
 {{- else if and $href (not $u.IsAbs) -}}
   {{- $path := strings.TrimPrefix "./" $u.Path -}}
@@ -29,8 +28,10 @@
       {{- $href = printf "%s#%s" $href . -}}
     {{- end -}}
     <a href="{{ $href }}" title="{{ $title }}">
-      {{- partial "helper/title-svg.html" $targetPage -}}&nbsp;
-      {{- .Text -}}
+      <span class="text-with-icon">
+        {{- partial "helper/title-svg.html" $targetPage -}}
+        <span>{{- .Text -}}</span>
+      </span>
     </a>
   {{- else if or ($.PageInner.Resources.Get $path) (resources.Get $path) -}}
     {{- $resource := $.PageInner.GetPage $path -}}
@@ -47,11 +48,10 @@
   {{- end -}}
 {{- else if $u.IsAbs -}}
     <a href="{{ $u | safeURL }}" title="{{ $title }}" rel="external" target="_blank">
-        {{- with $svg:=resources.Get "svg/external-link-svgrepo-com.svg" | resources.Minify -}}
-        {{- $svg.Content | safeHTML -}}
-        {{- end -}}
-        &nbsp;
-        {{- .Text -}}
+      <span class="text-with-icon">
+        {{- partial "helper/svg.html" "external-link-svgrepo-com" -}}
+        <span>{{- .Text -}}</span>
+      </span>
     </a>
 {{- else -}}
     <a href="{{ $href }}" title="{{ $title }}">{{- .Text -}}</a>

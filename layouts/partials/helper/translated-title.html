@@ -1,15 +1,14 @@
-{{- partial "helper/title-svg.html" . -}}&nbsp;
 {{- $text := .Title | markdownify -}}
+{{- $title := $text -}}
 {{- if .IsTranslated -}}
     {{- if or (eq .Kind "taxonomy") (eq .Kind "term") -}}
         {{- if (T (replace (replace (printf "%s" $text) " " "") "-" "")) -}}
-        {{- T (replace (replace (printf "%s" $text) " " "") "-" "") -}}
-        {{- else -}}
-        {{- $text -}}
+            {{- $title := T (replace (replace (printf "%s" $text) " " "") "-" "") -}}
         {{- end -}}
-    {{- else -}}
-    {{- $text -}}
     {{- end -}}
-{{- else -}}
-{{- $text -}}
 {{- end -}}
+
+<span class="text-with-icon">
+    {{- partial "helper/title-svg.html" . -}}
+    <span>{{- $title -}}</span>
+</span>

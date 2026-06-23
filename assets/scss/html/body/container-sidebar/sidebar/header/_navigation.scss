@@ -14,13 +14,11 @@ nav.navigation {
     column-gap: 1em;
 
     > svg {
-      height: 1em;
       display: inline;
       margin-block: auto;
     }
 
     > span {
-      // text-transform: uppercase;
       font-variant: small-caps;
     }
   }
@@ -32,6 +30,7 @@ nav.navigation {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    row-gap: 0.5em;
 
     list-style-type: none;
 
@@ -39,8 +38,6 @@ nav.navigation {
     padding: 0;
 
     li {
-      margin-block-start: 0.5em;
-
       @include variables.border(true, true, true, true);
       border-radius: 2em;
       padding-inline: 0.5em;

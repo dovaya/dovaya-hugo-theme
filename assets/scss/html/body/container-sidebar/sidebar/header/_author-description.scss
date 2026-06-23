@@ -1,0 +1,25 @@
+@use "sass:map";
+@use "../../../../../variables" as variables;
+@use "../../../../../sizes" as sizes;
+@use "../../../../../colors" as colors;
+
+.sidebar {
+    ul {
+        @include variables.margin(sidebar, 0);
+        @include variables.font-size(sidebar-description);
+
+        display: inline flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.25em;
+
+        list-style-type: none;
+
+        margin: 0;
+        padding: 0;
+
+        li {
+            @include variables.font-size(sidebar-description);
+        }
+    }
+}

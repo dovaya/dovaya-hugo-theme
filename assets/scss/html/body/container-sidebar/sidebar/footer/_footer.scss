@@ -11,9 +11,10 @@
 
   align-items: center;
   justify-content: center;
+  text-align: center;
 
   p {
     @include variables.font-size(footer);
-    @include variables.margin(0, 0);
+    margin: 0;
   }
 }

@@ -11,6 +11,7 @@
 
   align-items: center;
   justify-content: center;
+  text-align: center;
 
   margin: auto;
 
@@ -28,7 +29,6 @@
     &[aria-current="true"] {
       cursor: pointer;
       @include variables.color(accent);
-      @include variables.border-color(accent);
     }
   }
 }

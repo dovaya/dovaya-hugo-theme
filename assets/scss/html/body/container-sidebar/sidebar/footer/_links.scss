@@ -7,17 +7,16 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  @include variables.set-spacing-of-element("column-gap", sidebar);
+  column-gap: 1em;
+  row-gap: 0.25em;
 
   align-items: center;
   justify-content: center;
 
-  text-align: center;
-
   a.svg {
     svg {
       @include variables.set-size-of-element(width, sidebar-links);
-      height: auto;
+      @include variables.set-size-of-element(height, sidebar-links);
     }
   }
 }

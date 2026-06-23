@@ -9,6 +9,7 @@
 {{ $anchorSanitized = (strings.TrimPrefix "-" $anchorSanitized) }}
 
 <h{{ .Level }} id="{{ $anchorSanitized }}" {{- with .Attributes.class }} class="{{ . }}" {{- end }}>
+  <p>test</p>
   {{ .Text }}
   {{/*  <a href="#{{ $anchorSanitized }}">#</a>  */}}
 </h{{ .Level }}>
