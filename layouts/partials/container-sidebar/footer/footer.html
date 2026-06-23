@@ -1,1 +1,9 @@
-<p class="copyright">&copy; {{ site.Copyright}}</p>
+{{- $yearSpan := "" -}}
+{{- $launchYear := site.Params.LaunchYear -}}
+{{- $currentYear := time.Now.Year -}}
+{{- if eq $launchYear $currentYear -}}
+{{- $yearSpan = printf "%d" $currentYear -}}
+{{- else -}}
+{{- $yearSpan = printf "%d - %d" $launchYear $currentYear -}}
+{{- end -}}
+<p class="copyright">&copy; {{ $yearSpan }}. {{ site.Copyright }}</p>

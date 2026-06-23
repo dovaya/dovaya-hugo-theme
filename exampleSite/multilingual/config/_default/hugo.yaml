@@ -48,6 +48,7 @@ params:
         position: 3
   images:
   - logo.jpg
+  launchYear: 2025
 
 permalinks:
   page:
@@ -61,7 +62,7 @@ languages:
     languageDirection: ltr
     languageName: Deutsch
     title: Example Webseite
-    copyright: 2025. Example. Alle Rechte vorbehalten.
+    copyright: Example. Alle Rechte vorbehalten.
     params:
       author:
         description:
@@ -77,7 +78,7 @@ languages:
     languageDirection: ltr
     languageName: English
     title: Example Website
-    copyright: 2025. Example. All rights reserved.
+    copyright: Example. All rights reserved.
     params:
       author:
         description:
