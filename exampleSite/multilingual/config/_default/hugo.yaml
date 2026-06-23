@@ -59,8 +59,8 @@ languages:
     weight: 1
     disabled: false
     locale: de-DE
-    languageDirection: ltr
-    languageName: Deutsch
+    direction: ltr
+    label: Deutsch
     title: Example Webseite
     copyright: Example. Alle Rechte vorbehalten.
     params:
@@ -76,8 +76,8 @@ languages:
     weight: 2
     disabled: false
     locale: en-US
-    languageDirection: ltr
-    languageName: English
+    direction: ltr
+    label: English
     title: Example Website
     copyright: Example. All rights reserved.
     params:
