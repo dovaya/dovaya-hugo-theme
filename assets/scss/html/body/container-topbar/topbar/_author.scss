@@ -8,6 +8,6 @@
     h1 {
         @include variables.font-size(topbar);
         margin: 0;
-        font-variant: small-caps;
+        // font-variant: small-caps;
     }
 }
