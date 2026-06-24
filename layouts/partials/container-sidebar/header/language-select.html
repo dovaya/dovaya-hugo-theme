@@ -7,11 +7,11 @@
         <li class="language-item">
             {{ if eq $currentPage.Language.Lang .Language.Lang }}
                 <a aria-label="Go to {{ .Name }}" aria-current="page" href="{{ .RelPermalink }}">
-                    {{- partial "helper/text-with-icon.html" (dict "svg" "language-svgrepo-com" "text" upper .Language.Lang) -}}
+                    {{- partial "helper/text-with-icon.html" (dict "svg" "language-svgrepo-com" "text" (upper .Language.Lang)) -}}
                 </a>
             {{ else }}
                 <a aria-label="Go to {{ .Name }}" href="{{ .RelPermalink }}" >
-                    {{- partial "helper/text-with-icon.html" (dict "svg" "language-svgrepo-com" "text" upper .Language.Lang) -}}
+                    {{- partial "helper/text-with-icon.html" (dict "svg" "language-svgrepo-com" "text" (upper .Language.Lang)) -}}
                 </a>
             {{ end }}
         </li>
