@@ -7,19 +7,19 @@ nav.navigation {
   max-width: 100%;
   width: max-content;
 
-  a, span.sublist-trigger {
+  span.menu-item {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     column-gap: 1em;
 
+    @include variables.border(true, true, true, true);
+    border-radius: 2em;
+    padding-inline: 0.5em;
+
     > svg {
       display: inline;
       margin-block: auto;
-    }
-
-    > span {
-      // font-variant: small-caps;
     }
   }
 
@@ -37,12 +37,6 @@ nav.navigation {
     margin: 0;
     padding: 0;
 
-    li {
-      @include variables.border(true, true, true, true);
-      border-radius: 2em;
-      padding-inline: 0.5em;
-    }
-
     &.sublist {
       max-height: 0; /* Collapsed state */
       overflow: hidden;
@@ -55,6 +49,8 @@ nav.navigation {
       &[aria-expanded="true"] {
         max-height: 100vh; /* Arbitrary max height to allow for expansion */
         opacity: 1;
+        margin-block-start: 0.5em;
+        padding-inline: 0.5em;
       }
     }
   }

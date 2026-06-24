@@ -8,7 +8,11 @@
     {{- end -}}
 {{- end -}}
 
-<span class="text-with-icon">
-    {{- partial "helper/title-svg.html" . -}}
-    <span>{{- $title -}}</span>
-</span>
+{{- $svg := "" -}}
+{{- with .Params.svg -}}
+    {{- $svg = . -}}
+{{- else -}}
+    {{- $svg = "link-svgrepo-com" -}}
+{{- end -}}
+
+{{- partial "helper/text-with-icon.html" (dict "svg" $svg "text" $title) -}}

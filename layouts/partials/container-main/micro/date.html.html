@@ -1,12 +1,12 @@
-{{ $timeFormat := "02 January 2006"  }}
-{{ $timeFormatMultiple := "02 January 2006"  }}
+{{ $timeFormat := ":date_full"  }}
+{{ $timeFormatMultiple := ":date_medium"  }}
 {{ $pageParams := .Params }}
 
 {{- if $pageParams.DisplayCreationDate -}}
     {{- with .Date -}}
     <div class="dates">
         <p class="dates__single">
-            {{ .Format $timeFormat }}
+            {{ . | time.Format $timeFormat }}
         </p>
     </div>
     {{- end -}}
@@ -17,26 +17,17 @@
     <ul class="dates__list">
         {{/*  {{- with $page.Params.dateFinished -}}
         <li class="dates__list-item">
-            {{- with resources.Get "svg/check-circle-svgrepo-com.svg" | resources.Minify -}}
-            {{- .Content | safeHTML -}}
-            {{- end }}&nbsp;
-            {{ time.Format $timeFormatMultiple . -}}
+            {{- partial "helper/text-with-icon.html" (dict "svg" "check-circle-svgrepo-com" "text" ( . | time.Format $timeFormatMultiple)) -}}
         </li>
         {{- end -}}  */}}
         {{- with $pageParams.dateUpdated -}}
         <li class="dates__list-item">
-            {{- with resources.Get "svg/refresh-ccw-svgrepo-com.svg" | resources.Minify -}}
-            {{- .Content | safeHTML -}}
-            {{- end }}&nbsp;
-            {{ time.Format $timeFormatMultiple . -}}
+            {{- partial "helper/text-with-icon.html" (dict "svg" "refresh-ccw-svgrepo-com" "text" ( . | time.Format $timeFormatMultiple)) -}}
         </li>
         {{- end -}}
         {{- with $pageParams.dateCreated -}}
         <li class="dates__list-item">
-            {{- with resources.Get "svg/upload-cloud-svgrepo-com.svg" | resources.Minify -}}
-            {{- .Content | safeHTML -}}
-            {{- end }}&nbsp;
-            {{ time.Format $timeFormatMultiple . -}}
+            {{- partial "helper/text-with-icon.html" (dict "svg" "upload-cloud-svgrepo-com" "text" ( . | time.Format $timeFormatMultiple)) -}}
         </li>
         {{- end -}}
     </ul>
