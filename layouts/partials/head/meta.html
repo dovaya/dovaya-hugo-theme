@@ -33,18 +33,18 @@
   
 {{- if eq .Kind "page" -}}
     {{- if eq .CurrentSection "home" -}}
-    <title>{{- with .Title -}}{{- . -}} | {{- end -}}{{- site.Title -}}</title>
+    <title>{{- with .Title -}}{{- . -}}&nbsp;|&nbsp;{{- end -}}{{- site.Title -}}</title>
     {{- else -}}
-    <title>{{- with .CurrentSection.Title -}}{{- . | strings.FirstUpper -}}: {{- end -}}{{- with .Title -}}{{- . -}} | {{- end -}}{{- site.Title -}}</title>
+    <title>{{- with .CurrentSection.Title -}}{{- . | strings.FirstUpper -}}:&nbsp;{{- end -}}{{- with .Title -}}{{- . -}}&nbsp;|&nbsp;{{- end -}}{{- site.Title -}}</title>
     {{- end -}}
 {{- else if eq .Kind "section" -}}
-<title>{{- with .Title -}}{{- . -}} | {{- end -}}{{- site.Title -}}</title>
+<title>{{- with .Title -}}{{- . -}}&nbsp;|&nbsp;{{- end -}}{{- site.Title -}}</title>
 {{- else if eq .Kind "term" -}}
-<title>{{- with .Parent.Title -}}{{- . | strings.FirstUpper -}}: {{- end -}}{{- with .Title -}}{{- . -}} | {{- end -}}{{- site.Title -}}</title>
+<title>{{- with .Parent.Title -}}{{- . | strings.FirstUpper -}}:&nbsp;{{- end -}}{{- with .Title -}}{{- . -}}&nbsp;|&nbsp;{{- end -}}{{- site.Title -}}</title>
 {{- else if eq .Kind "taxonomy" -}}
-<title>{{- with .Title -}}{{- . -}} | {{- end -}}{{- site.Title -}}</title>
+<title>{{- with .Title -}}{{- . -}}&nbsp;|&nbsp;{{- end -}}{{- site.Title -}}</title>
 {{- else -}}
-<title>{{- with .Title -}}{{- . -}} | {{- end -}}{{- site.Title -}}</title>
+<title>{{- with .Title -}}{{- . -}}&nbsp;|&nbsp;{{- end -}}{{- site.Title -}}</title>
 {{- end -}}
 
 {{- with $icon:=resources.Get "favicon.png" -}}
