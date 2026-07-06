@@ -6,4 +6,4 @@
 {{- else -}}
 {{- $yearSpan = printf "%d - %d" $launchYear $currentYear -}}
 {{- end -}}
-<p class="copyright">&copy; {{- $yearSpan -}}. {{- site.Copyright -}}</p>
+<p class="copyright">&copy; {{ $yearSpan -}}. {{ site.Copyright -}}</p>
