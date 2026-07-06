@@ -73,37 +73,27 @@
 </nav>
 
 {{- define "_partials/container-sidebar/header/navigation/item.html" -}}
-    {{- $text := "" -}}
-    {{- with .Pre -}}
-        {{- $text = printf "%s " . -}}
-    {{- end -}}
-    {{- with .Name -}}
-        {{- $text = printf "%s%s" $text . -}}
-    {{- end -}}
-    {{- with .Post -}}
-        {{- $text = printf "%s %s" $text . -}}
-    {{- end -}}
     <span class="menu-item">
         {{- partial "helper/title-svg.html" . -}}
-        <span>{{- $text -}}</span>
+        {{- with .Pre -}}
+            <span>{{- . -}}</span>
+        {{- end -}}
+        {{- with .Name -}}
+            <span>{{- . -}}</span>
+        {{- end -}}
+        {{- with .Post -}}
+            <span>{{- . -}}</span>
+        {{- end -}}
     </span>
 {{- end -}}
 
 {{- define "_partials/container-sidebar/header/navigation/index-item.html" -}}
-    {{- $text := "" -}}
-    {{- with .Pre -}}
-        {{- $text = printf "%s " . -}}
-    {{- end -}}
-    {{- with T "Index"}}
-        {{- $text = printf "%s%s" $text . -}}
-    {{- else -}}
-        {{- $text = printf "%s%s" $text "Index" -}}
-    {{- end -}}
-    {{- with .Post -}}
-        {{- $text = printf "%s %s" $text . -}}
-    {{- end -}}
     <span class="menu-item">
         {{- partial "helper/svg.html" "list-svgrepo-com" -}}
-        <span>{{- $text -}}</span>
+        {{- with T "Index" -}}
+            <span>{{- . -}}</span>
+        {{- else -}}
+            <span>Index</span>
+        {{- end -}}
     </span>
 {{- end -}}
