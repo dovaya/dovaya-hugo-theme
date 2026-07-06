@@ -1,7 +1,7 @@
-{{ $opts := dict "minify" true -}}
-{{ if hugo.IsDevelopment -}}
-{{ $opts = merge $opts (dict "minify" false) -}}
-{{ end -}}
+{{- $opts := dict "minify" true -}}
+{{- if hugo.IsDevelopment -}}
+{{- $opts = merge $opts (dict "minify" false) -}}
+{{- end -}}
 
 <script>
   (() => {
@@ -10,24 +10,24 @@
   })();
 </script>
 
-{{ with $theme_toggle:=resources.Get "js/theme-toggle.js" | js.Build $opts }}
-  {{ if not hugo.IsDevelopment -}}
-  {{ $theme_toggle = $theme_toggle | fingerprint -}}
-  {{ end -}}
-  <script src="{{ $theme_toggle.Permalink }}" type="module"></script>
-{{ end }}
+{{- with $theme_toggle:=resources.Get "js/theme-toggle.js" | js.Build $opts -}}
+  {{- if not hugo.IsDevelopment -}}
+  {{- $theme_toggle = $theme_toggle | fingerprint -}}
+  {{- end -}}
+  <script src="{{- $theme_toggle.Permalink -}}" type="module"></script>
+{{- end -}}
 
-{{ with $desktop:=resources.Get "js/navigation.js" | js.Build $opts }}
-  {{ if not hugo.IsDevelopment -}}
-  {{ $desktop = $desktop | fingerprint -}}
-  {{ end -}}
-  <script src="{{ $desktop.Permalink }}" type="module"></script>
-{{ end }}
+{{- with $desktop:=resources.Get "js/navigation.js" | js.Build $opts -}}
+  {{- if not hugo.IsDevelopment -}}
+  {{- $desktop = $desktop | fingerprint -}}
+  {{- end -}}
+  <script src="{{- $desktop.Permalink -}}" type="module"></script>
+{{- end -}}
 
-{{ with $mobile:=resources.Get "js/sidebar-toggle.js" | js.Build $opts }}
-  {{ if not hugo.IsDevelopment -}}
-  {{ $mobile = $mobile | fingerprint -}}
-  {{ end -}}
-  <script src="{{ $mobile.Permalink }}" type="module"></script>
-{{ end }}
+{{- with $mobile:=resources.Get "js/sidebar-toggle.js" | js.Build $opts -}}
+  {{- if not hugo.IsDevelopment -}}
+  {{- $mobile = $mobile | fingerprint -}}
+  {{- end -}}
+  <script src="{{- $mobile.Permalink -}}" type="module"></script>
+{{- end -}}
 

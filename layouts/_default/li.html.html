@@ -1,16 +1,16 @@
-{{ $timeFormat := ":date_full"  }}
-{{ $page := .}}
-{{ $parentPage := .Parent}}
-{{ if and (not ($page.Eq site.Home)) (not ($parentPage.Eq site.Home)) }}
+{{- $timeFormat := ":date_full" -}}
+{{- $page := . -}}
+{{- $parentPage := .Parent}}
+{{- if and (not ($page.Eq site.Home)) (not ($parentPage.Eq site.Home)) -}}
     <li class="main__articles-bundle-list-item">
-        <a href="{{ .RelPermalink }}">{{ partial "helper/translated-title.html" $page }} | {{ partial "helper/translated-title" $parentPage }}</a>
-        {{- with $page.Params.DisplayCreationDate -}}<p class="dates__single">{{ $page.Date | time.Format $timeFormat }}</p>{{- end -}}
-        <p>{{ $page.Summary }}</p>
+        <a href="{{- .RelPermalink -}}">{{- partial "helper/translated-title.html" $page }} | {{ partial "helper/translated-title" $parentPage -}}</a>
+        {{- with $page.Params.DisplayCreationDate -}}<p class="dates__single">{{- $page.Date | time.Format $timeFormat -}}</p>{{- end -}}
+        <p>{{- $page.Summary -}}</p>
     </li>
-{{ else }}
+{{- else -}}
     <li class="main__articles-bundle-list-item">
-        <a href="{{ .RelPermalink }}">{{ partial "helper/translated-title.html" $page }}</a>
-        {{- with $page.Params.DisplayCreationDate -}}<p class="dates__single">{{ $page.Date| time.Format $timeFormat }}</p>{{- end -}}
-        <p>{{ $page.Summary }}</p>
+        <a href="{{- .RelPermalink -}}">{{- partial "helper/translated-title.html" $page -}}</a>
+        {{- with $page.Params.DisplayCreationDate -}}<p class="dates__single">{{- $page.Date | time.Format $timeFormat -}}</p>{{- end -}}
+        <p>{{- $page.Summary -}}</p>
     </li>
-{{ end }}
+{{- end -}}

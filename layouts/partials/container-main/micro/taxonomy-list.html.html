@@ -1,40 +1,40 @@
-{{ $currentPage := . }}
+{{- $currentPage := . -}}
 
-{{ $taxonomies := slice }}
-{{ $taxonomiesPages := slice }}
+{{- $taxonomies := slice -}}
+{{- $taxonomiesPages := slice -}}
 
-{{ with site.Taxonomies }}
-    {{ range $taxonomy, $terms := . }}
-        {{ range $term, $weightedPages := $terms }}
-            {{ range $index, $weightedPage := $weightedPages}}
-                {{ if eq $currentPage $weightedPage.Page}}
-                    {{ if not (in $taxonomies $taxonomy)}}
-                    {{ $taxonomies = $taxonomies | append $taxonomy }}
-                    {{ $taxonomyPage := site.GetPage $taxonomy}}
-                    {{ $taxonomiesPages = $taxonomiesPages | append $taxonomyPage }}
-                    {{ end }}
-                {{ end }}
-            {{ end }}
-        {{ end }}
-    {{ end }}
-{{ end }}
-{{ $lenTaxonomies := (len $taxonomies) }}
+{{- with site.Taxonomies -}}
+    {{- range $taxonomy, $terms := . -}}
+        {{- range $term, $weightedPages := $terms -}}
+            {{- range $index, $weightedPage := $weightedPages}}
+                {{- if eq $currentPage $weightedPage.Page}}
+                    {{- if not (in $taxonomies $taxonomy)}}
+                    {{- $taxonomies = $taxonomies | append $taxonomy -}}
+                    {{- $taxonomyPage := site.GetPage $taxonomy}}
+                    {{- $taxonomiesPages = $taxonomiesPages | append $taxonomyPage -}}
+                    {{- end -}}
+                {{- end -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+{{- $lenTaxonomies := (len $taxonomies) -}}
 
-{{ if (gt $lenTaxonomies  0)}}
+{{- if (gt $lenTaxonomies  0)}}
     <div class="taxonomy">
-    {{ range sort $taxonomiesPages "Weight"}}
+    {{- range sort $taxonomiesPages "Weight" -}}
         <ul class="taxonomy__list">
             <li class="taxonomy__list-item item-taxonomy">
-                <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">{{ partial "helper/translated-title.html" . }}</a>
+                <a href="{{- .RelPermalink -}}" title="{{- .LinkTitle -}}">{{- partial "helper/translated-title.html" . -}}</a>
             </li>
-            {{ with $terms := $currentPage.GetTerms .Type }}
-                {{ range $indexTerms, $term := $terms }}
+            {{- with $terms := $currentPage.GetTerms .Type -}}
+                {{- range $indexTerms, $term := $terms -}}
                 <li class="taxonomy__list-item item-term">
-                    <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">{{ partial "helper/translated-title.html" . }}</a>
+                    <a href="{{- .RelPermalink -}}" title="{{- .LinkTitle -}}">{{- partial "helper/translated-title.html" . -}}</a>
                 </li>
-                {{ end }}
-            {{ end }}
+                {{- end -}}
+            {{- end -}}
         </ul>
-    {{ end }}
+    {{- end -}}
     </div>
-{{ end }}
+{{- end -}}

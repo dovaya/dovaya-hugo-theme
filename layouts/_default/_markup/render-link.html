@@ -10,7 +10,7 @@
 {{- $href := $u.String -}}
 {{- if strings.HasPrefix $u.String "#" -}}
   {{- $href = printf "%s#%s" .PageInner.RelPermalink $u.Fragment -}}
-  <a href="{{ $href }}" title="{{ $title }}">
+  <a href="{{- $href -}}" title="{{- $title -}}">
     {{- partial "helper/text-with-icon.html" (dict "svg" "link-svgrepo-com" "text" .Text) -}}
   </a>
 {{- else if and $href (not $u.IsAbs) -}}
@@ -24,7 +24,7 @@
     {{- with $u.Fragment -}}
       {{- $href = printf "%s#%s" $href . -}}
     {{- end -}}
-    <a href="{{ $href }}" title="{{ $title }}">
+    <a href="{{- $href -}}" title="{{- $title -}}">
       {{- partial "helper/text-with-icon.html" (dict "svg" $targetPage.Params.SVG "text" .Text) -}}
     </a>
   {{- else if or ($.PageInner.Resources.Get $path) (resources.Get $path) -}}
@@ -36,15 +36,15 @@
     {{- with $u.Fragment -}}
       {{- $href = printf "%s#%s" $href . -}}
     {{- end -}}
-    <a href="{{ $href }}" title="{{ $title }}">{{- .Text -}}</a>
+    <a href="{{- $href -}}" title="{{- $title -}}">{{- .Text -}}</a>
   {{- else -}}
-  <a href="{{ $href }}" title="{{ $title }}">{{- .Text -}}</a>
+  <a href="{{- $href -}}" title="{{- $title -}}">{{- .Text -}}</a>
   {{- end -}}
 {{- else if $u.IsAbs -}}
-    <a href="{{ $u | safeURL }}" title="{{ $title }}" rel="external" target="_blank">
+    <a href="{{- $u | safeURL -}}" title="{{- $title -}}" rel="external" target="_blank">
       {{- partial "helper/text-with-icon.html" (dict "svg" "external-link-svgrepo-com" "text" .Text) -}}
     </a>
 {{- else -}}
-    <a href="{{ $href }}" title="{{ $title }}">{{- .Text -}}</a>
+    <a href="{{- $href -}}" title="{{- $title -}}">{{- .Text -}}</a>
 {{- end -}}
 {{- /* chomp trailing newline */ -}}

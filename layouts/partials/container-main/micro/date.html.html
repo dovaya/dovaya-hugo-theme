@@ -1,12 +1,12 @@
-{{ $timeFormat := ":date_full"  }}
-{{ $timeFormatMultiple := ":date_medium"  }}
-{{ $pageParams := .Params }}
+{{- $timeFormat := ":date_full"  -}}
+{{- $timeFormatMultiple := ":date_medium"  -}}
+{{- $pageParams := .Params -}}
 
 {{- if $pageParams.DisplayCreationDate -}}
     {{- with .Date -}}
     <div class="dates">
         <p class="dates__single">
-            {{ . | time.Format $timeFormat }}
+            {{- . | time.Format $timeFormat -}}
         </p>
     </div>
     {{- end -}}

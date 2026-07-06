@@ -1,9 +1,9 @@
-<span class="{{- with (.Get "class") }}{{ . }}{{ end -}}">
+<span class="{{- with (.Get "class") -}}{{- . -}}{{- end -}}">
     {{- if eq (.Get "type") "html" -}}
-    {{ .Inner | safeHTML }}
+    {{- .Inner | safeHTML -}}
     {{- else if eq (.Get "type") "markdown" -}}
-    {{ .Inner | markdownify }}
+    {{- .Inner | markdownify -}}
     {{- else -}}
-    {{ .Inner }}
+    {{- .Inner -}}
     {{- end -}}
 </span>

@@ -1,31 +1,31 @@
-{{ define "main" }}
+{{- define "main" -}}
 
-{{ $pageTerm := . }}
+{{- $pageTerm := . -}}
 
-{{ $pages := slice }}
-{{ if (eq $pageTerm.Params.sortArticlesBy "ByDate.Reverse")}}
-{{ $pages = $pageTerm.Pages.ByDate.Reverse }}
-{{ else if (eq $pageTerm.Params.sortArticlesBy "ByWeight")}}
-{{ $pages = $pageTerm.Pages.ByWeight }}
-{{ else if (eq $pageTerm.Params.sortArticlesBy "ByParam")}}
-{{ $pages = $pageTerm.Pages.ByParam .Params.SortingParam }}
-{{ else }}
-{{ $pages = $pageTerm.Pages.ByTitle }}
-{{ end }}
+{{- $pages := slice -}}
+{{- if (eq $pageTerm.Params.sortArticlesBy "ByDate.Reverse")}}
+{{- $pages = $pageTerm.Pages.ByDate.Reverse -}}
+{{- else if (eq $pageTerm.Params.sortArticlesBy "ByWeight")}}
+{{- $pages = $pageTerm.Pages.ByWeight -}}
+{{- else if (eq $pageTerm.Params.sortArticlesBy "ByParam")}}
+{{- $pages = $pageTerm.Pages.ByParam .Params.SortingParam -}}
+{{- else -}}
+{{- $pages = $pageTerm.Pages.ByTitle -}}
+{{- end -}}
 
 <div class="main__articles">
   <h2>   
     {{- partial "helper/text-with-icon.html" (dict "svg" "link-svgrepo-com" "text" "Related Pages") -}}
   </h2>
-  {{ range $pages.GroupBy "Type" }}
+  {{- range $pages.GroupBy "Type" -}}
   <div class="main__articles-bundle">
     <ul class="main__articles-bundle-list">
-      {{ range .Pages }}
-      {{ .Render "li"}}
-      {{ end }}
+      {{- range .Pages -}}
+      {{- .Render "li" -}}
+      {{- end -}}
     </ul>
   </div>
-  {{ end }}
+  {{- end -}}
 </div>
 
-{{ end }}
+{{- end -}}

@@ -1,9 +1,9 @@
 {{- $u := urls.Parse .Destination -}}
 {{- $href := $u.String -}}
-{{- if strings.HasPrefix $u.String "#" }}
-  {{- $href = printf "%s#%s" .PageInner.RelPermalink $u.Fragment }}
+{{- if strings.HasPrefix $u.String "#" -}}
+  {{- $href = printf "%s#%s" .PageInner.RelPermalink $u.Fragment -}}
 {{- else if not $u.IsAbs -}}
-  {{- $path := strings.TrimPrefix "./" $u.Path }}
+  {{- $path := strings.TrimPrefix "./" $u.Path -}}
   {{- with or
     ($.PageInner.GetPage $path)
     ($.PageInner.Resources.Get $path)
@@ -25,5 +25,5 @@
       {{- printf " %s=%q" $k $v | safeHTMLAttr -}}
     {{- end -}}
   {{- end -}}
-  >{{ .Text }}</a>
+  >{{- .Text -}}</a>
 {{- /**/ -}}

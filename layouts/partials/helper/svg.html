@@ -2,3 +2,4 @@
 {{- with resources.Get $svg | resources.Minify -}}
 {{- .Content | safeHTML -}}
 {{- end -}}
+{{- /* chomp trailing newline */ -}}
